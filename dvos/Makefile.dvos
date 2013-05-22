@@ -1,0 +1,96 @@
+# dvos makefile
+
+
+#==== Use the lpc13xx core ====#
+ifeq ($(mcu),lpc13xx)
+    # by default, lpc13xx uses the lpc1311 cpu
+    COMPILER_DEFINES += -DMCU_IS_LPC13XX
+    COMPILER_DEFINES += -DMCU_IS_LPC1311
+    COMPILER_DEFINES += -DKERNEL_MEMORY=$(kernelmemory)
+    COMPILER_DEFINES += -DKERNEL_CPU_FREQ=72000
+
+    ASM_OPTIONS += --defsym McuLpc1315=0
+
+    include $(DVOS_PATH)hw/Makefile.lpc13xx.hw
+endif
+
+#==== Use the lpc1315 core ====#
+ifeq ($(mcu),lpc1315)
+    COMPILER_DEFINES += -DMCU_IS_LPC13XX
+    COMPILER_DEFINES += -DMCU_IS_LPC1315
+    COMPILER_DEFINES += -DKERNEL_MEMORY=$(kernelmemory)
+    COMPILER_DEFINES += -DKERNEL_CPU_FREQ=72000
+
+    ASM_OPTIONS += --defsym McuLpc1315=1
+
+    include $(DVOS_PATH)hw/Makefile.lpc13xx.hw
+endif
+
+#==== Use the lpc17xx core ====#
+ifeq ($(mcu),lpc17xx)
+    COMPILER_DEFINES += -DMCU_IS_LPC17XX
+    COMPILER_DEFINES += -DKERNEL_MEMORY=$(kernelmemory)
+    COMPILER_DEFINES += -DKERNEL_CPU_FREQ=100000
+
+    include $(DVOS_PATH)hw/Makefile.lpc17xx.hw
+endif
+
+#=== Board definition ===#
+ifeq ($(hardware),byc)
+    COMPILER_DEFINES += -DHARDWARE_IS_BYC_V1
+endif
+
+ifeq ($(hardware),lpc13-dev)
+    COMPILER_DEFINES += -DHARDWARE_IS_LPC13_DEV
+endif
+
+ifeq ($(hardware),lpc13-sensor)
+    COMPILER_DEFINES += -DHARDWARE_IS_LPC13XX_SENSOR
+endif
+
+#==== Use the internal oscillator of MCU ====#
+ifeq ($(oscinternal),yes)
+    COMPILER_DEFINES += -DMCU_USE_INTERNAL_OSC
+endif
+
+#==== Use the minimum kernel source code ====#
+ifeq ($(kernelmin),yes)
+    COMPILER_DEFINES += -DKERNEL_USE_MINIMUM
+endif
+
+#==== Use DebugPrintf in fault.c ====#
+ifeq ($(debug),yes)
+    COMPILER_DEFINES += -DFIRMWARE_USE_DEBUG
+endif
+
+ifeq ($(debug-lite),yes)
+    COMPILER_DEFINES += -DFIRMWARE_USE_DEBUG -DFIRMWARE_USE_DEBUG_LITE
+endif
+
+
+# Add kernel makefile
+include $(DVOS_PATH)kernel/Makefile.kernel
+
+DVOS_FILES= $(C_KERNEL) $(C_HW)
+
+# Include path:
+INCLUDE=$(INC_HW) $(INC_KERN)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

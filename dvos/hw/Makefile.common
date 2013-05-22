@@ -1,0 +1,163 @@
+# Common source files
+
+ifeq ($(libc),yes)
+    C_HW+=string.c ctype.c stdio.c
+endif
+
+ifeq ($(prs-sensor),yes)
+    C_HW+= prs-sensor.c 
+endif
+
+ifeq ($(mem-protocol),yes)
+    C_HW+= mem-protocol.c
+endif
+
+ifeq ($(uart0),yes)
+    C_HW+= uart0.c 
+endif
+
+ifeq ($(i2cslave),yes)
+    C_HW+= i2c0-slave-lpc13xx.c
+endif
+
+ifeq ($(gpio),yes)
+    C_HW+= gpio.c
+endif
+
+ifeq ($(gpio-irq),yes)
+    ifeq ($(mcu),lpc17xx)
+        C_HW+= gpio-irq-lpc17xx.c gpio-irq.c gpio-kevent-irq.c 
+    endif
+    ifeq ($(mcu),lpc13xx)
+        C_HW+= gpio-irq-lpc13xx.c gpio-irq.c gpio-kevent-irq.c gpio-lpc13xx.c
+    endif
+endif
+
+ifeq ($(analog),yes)
+    ifeq ($(mcu),lpc17xx)
+        C_HW+= analog-lpc17xx.c analog.c
+    endif
+    ifeq ($(mcu),lpc13xx)
+        C_HW+= analog-lpc13xx.c analog.c
+    endif
+endif
+
+ifeq ($(timer),yes)
+    ifeq ($(mcu),lpc17xx)
+        C_HW+= timer-lpc17xx.c
+    endif
+    ifeq ($(mcu),lpc13xx)
+# timer16.c is not set, because pwm use it
+        C_HW+= timer32-lpc13xx.c 
+    endif
+endif
+
+ifeq ($(i2cmaster),yes)
+    C_HW+= i2c0-master.c
+endif
+
+
+
+ifeq ($(spi),yes)
+    C_HW+= spi.c
+endif
+
+ifeq ($(debug),yes)
+  C_HW+= debugprintf.c
+endif
+
+ifeq ($(flash),yes)
+    C_HW+= iap.c flash.c rom-iap.c
+endif
+
+ifeq ($(pwm),yes)
+    ifeq ($(mcu),lpc17xx)
+        C_HW+= pwm-lpc17xx.c
+    endif
+    ifeq ($(mcu),lpc13xx)
+        C_HW+= pwm-lpc13xx.c
+    endif
+endif
+
+ifeq ($(sleep),yes)
+    ifeq ($(mcu),lpc17xx)
+        C_HW+= sleep-lpc17xx.c
+    endif
+    ifeq ($(mcu),lpc13xx)
+        C_HW+= sleep-lpc13xx.c wakeup-lpc13xx.c
+    endif
+endif
+
+
+ifeq ($(compass),yes)
+    C_HW+= compass.c
+    magnetometer = yes
+    accelerometer = yes
+    mathcos-sin = yes
+    mathtan = yes
+endif
+
+
+ifeq ($(power),yes)
+    C_HW+= power-lpc17xx.c
+endif
+
+ifeq ($(mathutil),yes)
+    C_HW+= math.c
+endif
+
+ifeq ($(mathcos),yes)
+    C_HW+= cos.c
+endif
+
+ifeq ($(mathsin),yes)
+    C_HW+= sin.c
+endif
+
+ifeq ($(mathtan),yes)
+    C_HW+= tan.c
+endif
+
+# this cos/sin function comes from freescale and this is for accelerometer
+ifeq ($(mathcos-sin),yes)
+    C_HW+= cos-sin.c
+endif
+
+ifeq ($(mathsqrt),yes)
+    C_HW+= sqrt.c
+endif
+
+
+
+ifeq ($(magnetometer),yes)
+    C_HW+= magnetometer.c
+    i2cmastersoft = yes
+    eeprom = yes
+endif
+
+ifeq ($(accelerometer),yes)
+    C_HW+= accelerometer.c
+    i2cmastersoft = yes
+endif
+
+ifeq ($(rgbled),yes)
+    C_HW+= rgbled.c
+endif
+
+ifeq ($(byc-board),yes)
+    C_HW+= byc-board.c
+endif
+
+ifeq ($(i2cmastersoft),yes)
+    C_HW+= i2c-master-soft.c
+endif
+
+ifeq ($(eeprom),yes)
+    C_HW+= eeprom.c rom-iap.c
+
+    ifeq ($(mcu),lpc1315)
+        SRC_HW+=$(HW)drivers/lpc1xxx/eeprom
+    else
+        SRC_HW+=$(HW)drivers/external/eeprom
+    endif
+endif

@@ -1,0 +1,42 @@
+
+#ifndef LIBS_HW_H
+#define LIBS_HW_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+#include "libs-default.h"
+
+
+#include "../../kernel/include/kernel-dvos.h"
+
+#include "drivers/uart.h"
+#include "drivers/rom-iap.h"
+#include "drivers/flash.h"
+#include "drivers/i2c.h"
+#include "drivers/i2c-soft.h"
+#include "drivers/analog.h"
+#include "drivers/gpio.h"
+#include "drivers/spi.h"
+#include "drivers/timer.h"
+#include "drivers/pwm.h"
+#include "drivers/sleep.h"
+#include "drivers/power.h"
+#include "drivers/prs-sensor.h"
+#include "drivers/compass.h"
+#include "drivers/accelerometer.h"
+#include "drivers/magnetometer.h"
+#include "drivers/mem-protocol.h"
+#include "drivers/rgbled.h"
+#include "drivers/byc-board.h"
+#include "drivers/eeprom.h"
+
+    
+
+#ifdef __cplusplus
+ }
+#endif
+
+#endif

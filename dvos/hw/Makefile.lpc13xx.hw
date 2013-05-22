@@ -1,0 +1,45 @@
+# default hw source files:
+C_HW=init.c core_cm3.c time.c 
+
+
+# Source path of HW:
+SRC_HW=$(HW)core/cortex-m3 \
+		$(HW)drivers/lpc1xxx/analog \
+        $(HW)drivers/lpc1xxx/uart \
+        $(HW)drivers/lpc1xxx/i2c \
+        $(HW)drivers/lpc1xxx/spi \
+        $(HW)drivers/lpc1xxx/gpio \
+        $(HW)drivers/lpc1xxx/timer \
+        $(HW)drivers/lpc1xxx/pwm \
+        $(HW)drivers/lpc1xxx/rom-iap \
+        $(HW)drivers/lpc1xxx/flash \
+        $(HW)drivers/external/prs-sensor \
+        $(HW)drivers/external/compass \
+        $(HW)drivers/external/accelerometer \
+        $(HW)drivers/external/magnetometer \
+        $(HW)drivers/external/mem-protocol \
+        $(HW)drivers/lpc1xxx/sleep \
+        $(HW)drivers \
+        $(HW)mcu/lpc13xx \
+		$(HW)utils \
+        $(HW)libc \
+        $(HW)math
+
+# Include the drivers source code:
+include $(DVOS_PATH)hw/Makefile.common
+
+# Path to HW:
+HW=$(DVOS_PATH)hw/
+
+
+# Include path of HW:
+INC_HW=-I$(HW)include/ \
+	-I$(HW)include/core \
+	-I$(HW)include/drivers \
+	-I$(HW)include/mcu
+
+# Linker HW
+LINK_HW=$(HW)mcu/lpc13xx/lpc13xx.ld
+
+# Asm HW
+ASM_HW=$(HW)mcu/lpc13xx/startup.S
