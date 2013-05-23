@@ -153,6 +153,7 @@
         </df>
         <df name="utils">
           <in>DebugPrintf.c</in>
+          <in>debugprintf.c</in>
           <in>time.c</in>
           <in>utils.c</in>
         </df>

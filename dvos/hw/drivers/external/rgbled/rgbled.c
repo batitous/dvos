@@ -80,9 +80,9 @@ static RGBLedSequence  sequences[RGB_LED_SEQUENCE_MAX];
 
 void setRgbLed(void)
 {
-    SetPwmDutyCycle(PWMREDLED, led.red);
-    SetPwmDutyCycle(PWMGREENLED, led.green);
-    SetPwmDutyCycle(PWMBLUELED, led.blue);
+    setPwmDutyCycle(PWMREDLED, led.red);
+    setPwmDutyCycle(PWMGREENLED, led.green);
+    setPwmDutyCycle(PWMBLUELED, led.blue);
 }
 
 void threadRgbLed(void)
@@ -135,12 +135,12 @@ void threadRgbLed(void)
 //-------------------------- public functions:
 
 
-void InitRgbLed(void)
+void initRgbLed(void)
 {
     UInt32 i;
    
-    InitPwm(PWMREDLED|PWMGREENLED|PWMBLUELED, 10000, 0);
-    EnablePwm(True);
+    initPwm(PWMREDLED|PWMGREENLED|PWMBLUELED, 10000, 0);
+    enablePwm(True);
     
     led.red = 0;
     led.green = 0;
@@ -162,7 +162,7 @@ void InitRgbLed(void)
     newThread(&threadRgbLed,256,2,2);
 }
 
-void SetColorToRgbLed(UInt8 red, UInt8 green, UInt8 blue)
+void setColorToRgbLed(UInt8 red, UInt8 green, UInt8 blue)
 {
     led.red = red;
     led.green = green;
@@ -174,7 +174,7 @@ void SetColorToRgbLed(UInt8 red, UInt8 green, UInt8 blue)
     setRgbLed();
 }
 
-void SetPredefinedColorToRgbLed(RgbLedFixedColor c)
+void setPredefinedColorToRgbLed(RgbLedFixedColor c)
 {
     RgbLedColor color = colors[c];
     
@@ -188,7 +188,7 @@ void SetPredefinedColorToRgbLed(RgbLedFixedColor c)
     setRgbLed();
 }
 
-void SetRgbLedSequence(UInt32 sequenceNumber, RgbLedFixedColor c, UInt32 time)
+void setRgbLedSequence(UInt32 sequenceNumber, RgbLedFixedColor c, UInt32 time)
 {
     RgbLedColor color = colors[c];
     
@@ -196,7 +196,7 @@ void SetRgbLedSequence(UInt32 sequenceNumber, RgbLedFixedColor c, UInt32 time)
     sequences[sequenceNumber].time = time;
 }
 
-void StartRgbLedSequence(UInt32 number, Bool loop)
+void startRgbLedSequence(UInt32 number, Bool loop)
 {
     currentSequence = 0;
     numberOfSequence = number;

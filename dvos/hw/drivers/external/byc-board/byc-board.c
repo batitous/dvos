@@ -30,16 +30,16 @@ void setMainPowerSupply(Bool enable)
 {
     //Supply pin P0.8
 
-    SetGpioDirection(SUPPLY_CMD,GPIO_OUT);
+    setGpioDirection(SUPPLY_CMD,GPIO_OUT);
     
     
     if(enable==True)
     {
-        SetGpioValue(SUPPLY_CMD,1);
+        setGpioValue(SUPPLY_CMD,1);
     }
     else
     {
-        SetGpioValue(SUPPLY_CMD,0);
+        setGpioValue(SUPPLY_CMD,0);
     }
     
 }
@@ -56,7 +56,7 @@ UInt32 getBatteryVoltage(void)
     
     // 1 ana = 2.91 vbatt
     
-    UInt32 battery = (UInt32) GetMcuAnalog(VSENSE_OUT);
+    UInt32 battery = (UInt32) getMcuAnalog(VSENSE_OUT);
     
 //    DebugPrintf("Ana2 = %d\r\n", battery);
     
@@ -74,7 +74,7 @@ UInt32 getCurrentConsumption(void)
     // 1 ana = 0.714 mA
     
     
-    UInt32 current = (UInt32) GetMcuAnalog(ISENSE_OUT);
+    UInt32 current = (UInt32) getMcuAnalog(ISENSE_OUT);
     
 //    DebugPrintf("Current (ana1) = %d\r\n", current);
     

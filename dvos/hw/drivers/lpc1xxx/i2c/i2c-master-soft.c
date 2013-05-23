@@ -48,7 +48,7 @@
 #              define GPIO_PORT       LPC_GPIO
 #              define SCL_PIN         15
 #              define SDA_PIN         16
-#              define initI2cIO()     /* remove pull up */\
+#              define initI2CIO()     /* remove pull up */\
                                       CLRBITS(LPC_IOCON->SWDIO_PIO0_15,0x18);\
                                       CLRBITS(LPC_IOCON->PIO0_16,0x18);\
                                       /* set SWDIO_PIO0_15 to GPIO mode */\
@@ -221,7 +221,7 @@ static UInt8 i2c_soft_receive_bit(void)
 
 void initI2CSoft(void)
 {
-    initI2cIO();
+    initI2CIO();
     
     
     // select i/o function

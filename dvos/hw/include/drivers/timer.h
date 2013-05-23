@@ -39,7 +39,8 @@ extern void setTimer0Callback(TimerIrqCallback c);
 extern void setTimer1Callback(TimerIrqCallback c);
 
 
-extern void initTimer32(TIMER timerSelected, UInt32 waitInUs);
+extern Bool initTimer32(TIMER timerSelected, UInt32 waitInUs);
+
 extern void setTimer32(TIMER timerSelected, UInt32 waitInUs);
 extern void enableTimer32(TIMER timerSelected, Bool enable);
 
