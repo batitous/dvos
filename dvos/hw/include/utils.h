@@ -48,19 +48,19 @@ extern void  waitUs(UInt32  delay);
 
 typedef void (*DebugInterfaceCallback)(UInt8 data); 
 
-extern void SetDebugInterface(DebugInterfaceCallback callback);
+extern void setDebugInterface(DebugInterfaceCallback callback);
 
 
 #ifdef FIRMWARE_USE_DEBUG
 
 #      ifndef FIRMWARE_USE_DEBUG_LITE
-extern void DebugPrintf(const char *format, ...);
+extern void debugPrintf(const char *format, ...);
 #       else
-#       define  DebugPrintf(...)
+#       define  debugPrintf(...)
 #endif
 
 #else
-#       define  DebugPrintf(...)
+#       define  debugPrintf(...)
 #endif
 
 

@@ -19,7 +19,7 @@
 #include "../include/libs-hardware.h"
 
 
-extern void InitLowLevelCpu(void);
+extern void initLowLevelCpu(void);
 
 //-------------------------- Wakeup pin configuration
 
@@ -98,7 +98,7 @@ void WAKEUP_IRQn_Handler(void)
 */
         
     // Initialize cpu clock
-    InitLowLevelCpu();
+    initLowLevelCpu();
     
     
     // Disable the wakeup pin IRQ
@@ -115,7 +115,7 @@ void WAKEUP_IRQn_Handler(void)
 //-------------------------- public functions
 
 
-void InitWakeUp(void)
+void initWakeUp(void)
 {
      // Set Falling edge on start logic
      CLRBIT(START_APRP, WAKEUP_PIN);

@@ -52,7 +52,7 @@ void TIMER3_IRQHandler(void)
 
 //-------------------------- public functions
 
-Bool InitTimer32(TIMER timerSelected, UInt32 waitInUs)
+Bool initTimer32(TIMER timerSelected, UInt32 waitInUs)
 {
     LPC_TIM_TypeDef * timer = 0;
     UInt32 waitInTick;
@@ -120,14 +120,14 @@ Bool InitTimer32(TIMER timerSelected, UInt32 waitInUs)
     return True;
 }
 
-void WaitTimer32(TIMER timerSelected)
+void waitTimer32(TIMER timerSelected)
 {
     while(timer0IrqFired==False);
     
     timer0IrqFired = False;
 }
 
-void WaitUsPrecise(UInt32 waitInUs)
+void waitUsPrecise(UInt32 waitInUs)
 {
     LPC_TIM_TypeDef * timer = LPC_TIM3;
     
@@ -142,7 +142,7 @@ void WaitUsPrecise(UInt32 waitInUs)
     while( (timer->TCR & 0x1) == 0x1);
 }
 
-void InitMcuClock(void)
+void initMcuClock(void)
 {
     SETBIT(LPC_SC->PCONP,16);
 //    SETBIT(LPC_SC->PCLKSEL1,26);
@@ -153,7 +153,7 @@ void InitMcuClock(void)
     LPC_RIT->RICOUNTER	= 0x00000000;
 }
 
-UInt32 GetMcuClock(void)
+UInt32 getMcuClock(void)
 {    
     return ((LPC_RIT->RICOUNTER+1)*1000)/KERNEL_CPU_FREQ;
 }

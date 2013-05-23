@@ -43,12 +43,12 @@ const ANALOG_CHANNEL analogChannelArray[]=
 
 //----------------------------- public functions
 
-ANALOG_CHANNEL GetAnalogChannel(UInt8 channel)
+ANALOG_CHANNEL getAnalogChannel(UInt8 channel)
 {
     return analogChannelArray[channel];
 }
 
-UInt16 GetMcuAnalog(ANALOG_CHANNEL channel)
+UInt16 getMcuAnalog(ANALOG_CHANNEL channel)
 {
 	UInt16 result;
 	UInt32 temp;

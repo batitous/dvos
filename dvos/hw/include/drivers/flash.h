@@ -37,10 +37,10 @@ extern Bool iapEraseSector(UInt32 start_sector,UInt32 end_sector);
  * @param sectorStart   Start number
  * @param sectorEnd     End number
  */
-extern void InitUserFlash(UInt32 sectorStart, UInt32 sectorEnd);
+extern void initUserFlash(UInt32 sectorStart, UInt32 sectorEnd);
 
 
-extern UInt32 GetUserFlashSize(void);
+extern UInt32 getUserFlashSize(void);
 
 /** @brief Get a pointer on the beginning of the user flash 
  *
@@ -48,17 +48,17 @@ extern UInt32 GetUserFlashSize(void);
  * 
  * @return A pointer.
  */
-extern UInt8 * GetUserFlashBuffer(void);
+extern UInt8 * getUserFlashBuffer(void);
 
 
-extern Bool EraseAllUserFlashSector(void);
+extern Bool eraseAllUserFlashSector(void);
 
 
 /** @brief Erase a complete sector of flash.
  * @param flashAddr    Address of the flash sector
  * @return False if error.
  */
-extern Bool EraseFlashSector(UInt32 flashAddr);
+extern Bool eraseFlashSector(UInt32 flashAddr);
 
 /** @brief Write a buffer into the flash.
  *
@@ -69,7 +69,7 @@ extern Bool EraseFlashSector(UInt32 flashAddr);
  * @param size          Size of buffer.
  * @param False if error.
  */
-extern Bool WriteBufferToFlash(UInt32 * flashAddr, UInt8 * src, UInt32 size);
+extern Bool writeBufferToFlash(UInt32 * flashAddr, UInt8 * src, UInt32 size);
 
 
 

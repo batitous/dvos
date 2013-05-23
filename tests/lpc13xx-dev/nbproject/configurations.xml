@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="84">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df name="dvos" root="../../dvos">
+      <df name="hw">
+        <df name="core">
+          <df name="cortex-m3">
+            <in>core_cm3.c</in>
+          </df>
+        </df>
+        <df name="drivers">
+          <df name="external">
+            <df name="accelerometer">
+              <in>accelerometer.c</in>
+            </df>
+            <df name="byc-board">
+              <in>byc-board.c</in>
+            </df>
+            <df name="compass">
+              <in>compass.c</in>
+            </df>
+            <df name="eeprom">
+              <in>eeprom.c</in>
+            </df>
+            <df name="magnetometer">
+              <in>magnetometer.c</in>
+            </df>
+            <df name="mem-protocol">
+              <in>mem-protocol.c</in>
+            </df>
+            <df name="prs-sensor">
+              <in>prs-sensor.c</in>
+            </df>
+            <df name="rgbled">
+              <in>rgbled.c</in>
+            </df>
+          </df>
+          <df name="lpc1xxx">
+            <df name="analog">
+              <in>analog-lpc13xx.c</in>
+              <in>analog-lpc17xx.c</in>
+              <in>analog.c</in>
+            </df>
+            <df name="eeprom">
+              <in>eeprom.c</in>
+            </df>
+            <df name="flash">
+              <in>flash.c</in>
+              <in>iap.c</in>
+            </df>
+            <df name="gpio">
+              <in>gpio-irq-lpc13xx.c</in>
+              <in>gpio-irq-lpc17xx.c</in>
+              <in>gpio-irq.c</in>
+              <in>gpio-kevent-irq.c</in>
+              <in>gpio-lpc13xx.c</in>
+              <in>gpio.c</in>
+            </df>
+            <df name="i2c">
+              <in>i2c-master-soft.c</in>
+              <in>i2c0-master.c</in>
+              <in>i2c0-slave-lpc13xx.c</in>
+            </df>
+            <df name="power">
+              <in>power-lpc17xx.c</in>
+            </df>
+            <df name="pwm">
+              <in>pwm-lpc13xx.c</in>
+              <in>pwm-lpc17xx.c</in>
+            </df>
+            <df name="rom-iap">
+              <in>rom-iap.c</in>
+            </df>
+            <df name="sleep">
+              <in>sleep-lpc13xx.c</in>
+              <in>sleep-lpc17xx.c</in>
+              <in>wakeup-lpc13xx.c</in>
+            </df>
+            <df name="spi">
+              <in>spi.c</in>
+            </df>
+            <df name="timer">
+              <in>timer-lpc17xx.c</in>
+              <in>timer16.c</in>
+              <in>timer32-lpc13xx.c</in>
+            </df>
+            <df name="uart">
+              <in>uart0.c</in>
+            </df>
+          </df>
+        </df>
+        <df name="include">
+          <df name="core">
+            <in>bit-band.h</in>
+            <in>core_cm3.h</in>
+          </df>
+          <df name="drivers">
+            <in>accelerometer.h</in>
+            <in>analog.h</in>
+            <in>byc-board.h</in>
+            <in>compass.h</in>
+            <in>eeprom.h</in>
+            <in>flash.h</in>
+            <in>gpio-pins.h</in>
+            <in>gpio.h</in>
+            <in>i2c-soft.h</in>
+            <in>i2c.h</in>
+            <in>magnetometer.h</in>
+            <in>mem-protocol.h</in>
+            <in>power.h</in>
+            <in>prs-sensor.h</in>
+            <in>pwm.h</in>
+            <in>rgbled.h</in>
+            <in>rom-iap.h</in>
+            <in>sleep.h</in>
+            <in>spi.h</in>
+            <in>timer.h</in>
+            <in>uart.h</in>
+          </df>
+          <df name="mcu">
+            <in>lpc13xx.h</in>
+            <in>lpc17xx.h</in>
+          </df>
+          <in>libc.h</in>
+          <in>libs-default.h</in>
+          <in>libs-hardware.h</in>
+          <in>math.h</in>
+          <in>types.h</in>
+          <in>utils.h</in>
+        </df>
+        <df name="libc">
+          <in>ctype.c</in>
+          <in>stdio.c</in>
+          <in>string.c</in>
+        </df>
+        <df name="math">
+          <in>cos-sin.c</in>
+          <in>cos.c</in>
+          <in>math.c</in>
+          <in>sin.c</in>
+          <in>sqrt.c</in>
+          <in>tan.c</in>
+        </df>
+        <df name="mcu">
+          <df name="lpc13xx">
+            <in>init.c</in>
+            <in>startup.S</in>
+          </df>
+          <df name="lpc17xx">
+            <in>init.c</in>
+            <in>startup.S</in>
+          </df>
+        </df>
+        <df name="utils">
+          <in>DebugPrintf.c</in>
+          <in>time.c</in>
+          <in>utils.c</in>
+        </df>
+      </df>
+      <df name="kernel">
+        <df name="include">
+          <in>kchannel.h</in>
+          <in>kernel-dvos.h</in>
+          <in>kernel-private.h</in>
+          <in>kernel.h</in>
+          <in>kevent.h</in>
+          <in>kiostream.h</in>
+          <in>klist.h</in>
+          <in>klock.h</in>
+          <in>kmemory.h</in>
+          <in>kmemorypool.h</in>
+          <in>kmutex.h</in>
+          <in>kthread.h</in>
+          <in>ktimer.h</in>
+        </df>
+        <df name="source">
+          <in>fault.c</in>
+          <in>faultdump.c</in>
+          <in>faultdumplite.c</in>
+          <in>kchannel.c</in>
+          <in>kernel.c</in>
+          <in>kevent.c</in>
+          <in>kiostream.c</in>
+          <in>klist.c</in>
+          <in>klock.c</in>
+          <in>kmemory.c</in>
+          <in>kmemorypool.c</in>
+          <in>kmutex.c</in>
+          <in>ktimer.c</in>
+          <in>main.c</in>
+          <in>slist.c</in>
+        </df>
+      </df>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+      <itemPath>Makefile.options</itemPath>
+      <itemPath>Makefile.toolchainconfig</itemPath>
+      <itemPath>include</itemPath>
+      <itemPath>source</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>source</Elem>
+    <Elem>../../dvos</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>gcc-cortex|GNU</compilerSet>
+      </toolsSet>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
+          <executablePath>build/firmware.elf</executablePath>
+          <cTool>
+            <incDir>
+              <pElem>.</pElem>
+            </incDir>
+          </cTool>
+        </makeTool>
+      </makefileType>
+    </conf>
+  </confs>
+</configurationDescriptor>

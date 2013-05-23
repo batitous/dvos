@@ -36,7 +36,7 @@ Offset	Name		Description
 #define I2C_ACK_HEADER  0x5F
 
 
-#define PRS_SENSOR_USE_DEBUG 1
+//#define PRS_SENSOR_USE_DEBUG 1
 
 #ifdef PRS_SENSOR_USE_DEBUG
 #   define TRACE_PRS(str)	DebugPrintf str
@@ -48,7 +48,7 @@ Offset	Name		Description
 //-------------------------- public functions:
 
 
-UInt8 InitSensorPRS(SensorType mtype, GPIO_PIN pin)
+UInt8 initSensorPRS(SensorType mtype, GPIO_PIN pin)
 {
     //UInt8 * i2caddrbuffer;
     UInt8 i2caddrbuffer[3];
@@ -64,21 +64,21 @@ UInt8 InitSensorPRS(SensorType mtype, GPIO_PIN pin)
     replybuffer[1] = mtype;
     replybuffer[2] = mtype;
 
-    SetGpioDirection(pin,GPIO_IN);
+    setGpioDirection(pin,GPIO_IN);
 
     TRACE_PRS(("InitSensorPRS: waiting for high pin state\r\n"));    
-    while(GetGpioValue(pin)==0);
+    while(getGpioValue(pin)==0);
 
     TRACE_PRS(("InitSensorPRS: waiting for low pin state\r\n"));
-    while(GetGpioValue(pin)==1);
+    while(getGpioValue(pin)==1);
 
     TRACE_PRS(("InitSensorPRS: Init i2c slave to %x\r\n", DEFAULT_ADDR));
-    InitSlaveI2C0(DEFAULT_ADDR, I2C_400_KHZ);
+    initSlaveI2C0(DEFAULT_ADDR, I2C_400_KHZ);
 
     
     TRACE_PRS(("InitSensorPRS: waiting for addr packet\r\n"));
    
-    i2cdatalength=GetBufferFromMasterI2C0(i2caddrbuffer, 3);
+    i2cdatalength=getBufferFromMasterI2C0(i2caddrbuffer, 3);
     
     TRACE_PRS(("InitSensorPRS: i2cdatalength = %x\r\n", i2cdatalength));
     
@@ -94,12 +94,12 @@ UInt8 InitSensorPRS(SensorType mtype, GPIO_PIN pin)
                 i2caddr = i2caddrbuffer[1];
                 TRACE_PRS(("new addr = 0x%x\r\n", i2caddr));
                 
-                InitSlaveI2C0(i2caddr, I2C_400_KHZ);
+                initSlaveI2C0(i2caddr, I2C_400_KHZ);
                 
                 //DebugPrintf("sending ack packet\r\n");
-                SetBufferToMasterI2C0(replybuffer, 3);
+                setBufferToMasterI2C0(replybuffer, 3);
 
-                i2cdatalength = GetBufferFromMasterI2C0(checkbuffer, 8);
+                i2cdatalength = getBufferFromMasterI2C0(checkbuffer, 8);
                 
                 if(i2cdatalength == 8)
                 {
@@ -108,7 +108,7 @@ UInt8 InitSensorPRS(SensorType mtype, GPIO_PIN pin)
                     {
                         repcheckbuffer[i] = checkbuffer[i];
                     }
-                    SetBufferToMasterI2C0(repcheckbuffer, 8);
+                    setBufferToMasterI2C0(repcheckbuffer, 8);
                     
                     TRACE_PRS(("[END] - new addr is 0x%x\r\n", i2caddr));
                     
@@ -122,7 +122,7 @@ UInt8 InitSensorPRS(SensorType mtype, GPIO_PIN pin)
     TRACE_PRS(("InitSensorPRS failed !\r\n"));
     
     //if error, halt i2c
-    HaltSlaveI2C0();
+    haltSlaveI2C0();
     
     return 0;
 

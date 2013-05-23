@@ -54,7 +54,7 @@ void TIMER_32_1_IRQn_Handler(void)
 
 //----------------------------- public functions
 
-void InitTimer32(TIMER timerSelected, UInt32 waitInUs)
+void initTimer32(TIMER timerSelected, UInt32 waitInUs)
 {
     LPC_TMR_TypeDef * timer;
     UInt32 waitInTick;
@@ -116,7 +116,7 @@ void InitTimer32(TIMER timerSelected, UInt32 waitInUs)
     
 }
 
-void SetTimer32(TIMER timerSelected, UInt32 waitInUs)
+void setTimer32(TIMER timerSelected, UInt32 waitInUs)
 {
     UInt32 waitInTick;
     LPC_TMR_TypeDef * timer;
@@ -138,7 +138,7 @@ void SetTimer32(TIMER timerSelected, UInt32 waitInUs)
     timer->TC = 0;
 }
 
-void EnableTimer32(TIMER timerSelected, Bool enable)
+void enableTimer32(TIMER timerSelected, Bool enable)
 {
     LPC_TMR_TypeDef * timer;
     
@@ -161,19 +161,19 @@ void EnableTimer32(TIMER timerSelected, Bool enable)
     }
 }
 
-void SetTimer0Callback(TimerIrqCallback c)
+void setTimer0Callback(TimerIrqCallback c)
 {
     timer0IrqCallback = c;
 }
 
-void SetTimer1Callback(TimerIrqCallback c)
+void setTimer1Callback(TimerIrqCallback c)
 {
     timer1IrqCallback = c;
 }
 
 
 // fonction a été testé, c'est ok !
-void WaitUsPrecise(UInt32 waitInUs)
+void waitUsPrecise(UInt32 waitInUs)
 {
     LPC_TMR_TypeDef * timer = LPC_TMR32B1;
     
@@ -191,7 +191,7 @@ void WaitUsPrecise(UInt32 waitInUs)
 }
 
 
-void InitMcuClock(void)
+void initMcuClock(void)
 {
     TIMER timerSelected;
     LPC_TMR_TypeDef * timer;
@@ -224,7 +224,7 @@ void InitMcuClock(void)
     SETBIT(timer->TCR,0);
 }
 
-UInt32 GetMcuClock(void)
+UInt32 getMcuClock(void)
 {
     LPC_TMR_TypeDef * timer = LPC_TMR32B1;
 

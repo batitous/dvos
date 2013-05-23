@@ -37,37 +37,37 @@ void dumpFaultHandler(UInt32 * stack)
     pc = stack[6];
     psr = stack[7];
 
-    DebugPrintf("HARDFAULT EXCEPTION\r\n");
-    DebugPrintf("[ Dump stack and fault register from base 0x%x]\r\n", stack );
-    DebugPrintf("R0  = 0x%x\r\n", r0);
-    DebugPrintf("R1  = 0x%x\r\n", r1);
-    DebugPrintf("R2  = 0x%x\r\n", r2);
-    DebugPrintf("R3  = 0x%x\r\n", r3);
-    DebugPrintf("R12 = 0x%x\r\n", r12);
-    DebugPrintf("LR  = 0x%x\r\n", lr);
-    DebugPrintf("PC  = 0x%x\r\n", pc);
-    DebugPrintf("psr = 0x%x\r\n", psr);
-    DebugPrintf("PSP = 0x%x\r\n", __get_PSP() );
+    debugPrintf("HARDFAULT EXCEPTION\r\n");
+    debugPrintf("[ Dump stack and fault register from base 0x%x]\r\n", stack );
+    debugPrintf("R0  = 0x%x\r\n", r0);
+    debugPrintf("R1  = 0x%x\r\n", r1);
+    debugPrintf("R2  = 0x%x\r\n", r2);
+    debugPrintf("R3  = 0x%x\r\n", r3);
+    debugPrintf("R12 = 0x%x\r\n", r12);
+    debugPrintf("LR  = 0x%x\r\n", lr);
+    debugPrintf("PC  = 0x%x\r\n", pc);
+    debugPrintf("psr = 0x%x\r\n", psr);
+    debugPrintf("PSP = 0x%x\r\n", __get_PSP() );
 
     // Bus fault address 
-    DebugPrintf("BFAR = %x\r\n", BFAR );
+    debugPrintf("BFAR = %x\r\n", BFAR );
     // MemManage Fault address 
-    DebugPrintf("MMAR = %x\r\n", MMAR );
+    debugPrintf("MMAR = %x\r\n", MMAR );
     // MemManage Fault Status
-    DebugPrintf("MMSR = %x\r\n", MMSR  );
+    debugPrintf("MMSR = %x\r\n", MMSR  );
     // Hard Fault Status
-    DebugPrintf("HSFR = %x\r\n", (*(volatile UInt32 *)(0xE000ED2C)) );
+    debugPrintf("HSFR = %x\r\n", (*(volatile UInt32 *)(0xE000ED2C)) );
     // Debug Fault Status
-    DebugPrintf("DFSR = %x\r\n", (*(volatile UInt32 *)(0xE000ED30)) );
+    debugPrintf("DFSR = %x\r\n", (*(volatile UInt32 *)(0xE000ED30)) );
     // Auxiliary Fault Status
-    DebugPrintf("AFSR = %x\r\n", (*(volatile UInt32 *)(0xE000ED3C)) );
+    debugPrintf("AFSR = %x\r\n", (*(volatile UInt32 *)(0xE000ED3C)) );
     
     //MMSR = 0; //cradok de chez cradok
     
     // test virtual memory
 //    if( BFAR > 0x80000 && BFAR < 0x10000000)
 //    {
-//        DebugPrintf("read/write to virtual address\r\n");
+//        debugPrintf("read/write to virtual address\r\n");
 //        stack[6] = stack[6] +2; //arm +4
 //    }
 //    else

@@ -23,12 +23,12 @@
 extern "C" {
 #endif
 
-void	InitSPI(void);
+void	initSPI(void);
 
-UInt8	SendByteToSPI(UInt8 outgoing);
-void	SendBufferToSPI(UInt8 *buffer, UInt32 size);
-UInt8   GetByteFromSPI(void);
-void	GetBufferFromSPI(UInt8 *buffer, UInt32 size);
+UInt8	sendByteToSPI(UInt8 outgoing);
+void	sendBufferToSPI(UInt8 *buffer, UInt32 size);
+UInt8   getByteFromSPI(void);
+void	getBufferFromSPI(UInt8 *buffer, UInt32 size);
 
 #ifdef __cplusplus
 }

@@ -35,7 +35,7 @@ typedef struct _Orientation_
 } Orientation;
     
     
-extern void ComputeOrientation(Orientation* out, MagneticRawValue* mag, AccelerationRawValue* accel);
+extern void computeOrientation(Orientation* out, MagneticRawValue* mag, AccelerationRawValue* accel);
 
 
 

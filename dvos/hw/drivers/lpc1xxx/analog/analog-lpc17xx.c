@@ -21,7 +21,7 @@
 
 //----------------------------- public functions
 
-void InitMcuAnalog(UInt32 analogChannel)
+void initMcuAnalog(UInt32 analogChannel)
 {
     // power on analog
     SETBIT(LPC_SC->PCONP,12);

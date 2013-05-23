@@ -19,7 +19,7 @@
 #include "../include/libs-hardware.h"
 
 
-void SetPowerSupply(POWERDRIVER driver, Bool enable)
+void setPowerSupply(POWERDRIVER driver, Bool enable)
 {
     if(enable==True)
     {

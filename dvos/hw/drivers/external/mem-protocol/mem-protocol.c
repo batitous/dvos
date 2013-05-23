@@ -27,7 +27,7 @@ static MemoryModule * memoryModules;
 MemProtocolSendCallback sendFromModuleToMaster;
 
 
-void InitMemoryModule(UInt32 number, MemProtocolSendCallback func)
+void initMemoryModule(UInt32 number, MemProtocolSendCallback func)
 {
     memoryModuleIndex = 0;
     memoryModuleNumber = number;
@@ -35,7 +35,7 @@ void InitMemoryModule(UInt32 number, MemProtocolSendCallback func)
     sendFromModuleToMaster = func;
 }
 
-void AddMemoryModule(UInt16 virtualAddr, UInt8 * objectAddr, UInt32 objectSize, MemProtocolUpdateCallback update )
+void addMemoryModule(UInt16 virtualAddr, UInt8 * objectAddr, UInt32 objectSize, MemProtocolUpdateCallback update )
 {
     memoryModules[memoryModuleIndex].id = virtualAddr;
     memoryModules[memoryModuleIndex].size = objectSize;
@@ -45,7 +45,7 @@ void AddMemoryModule(UInt16 virtualAddr, UInt8 * objectAddr, UInt32 objectSize, 
     memoryModuleIndex++;
 }
 
-MemoryModule * GetMemoryModuleFromAddress(UInt16 address)
+MemoryModule * getMemoryModuleFromAddress(UInt16 address)
 {
     UInt32 i;
     MemoryModule * mem;
@@ -63,7 +63,7 @@ MemoryModule * GetMemoryModuleFromAddress(UInt16 address)
 }
 
 
-void UpdateMemoryModule(UInt8 *buffer, UInt8 size)
+void updateMemoryModule(UInt8 *buffer, UInt8 size)
 {
     UInt32 i ;
     MemoryModule * mem;
@@ -73,7 +73,7 @@ void UpdateMemoryModule(UInt8 *buffer, UInt8 size)
 
     virtualAddr = ((buffer)[1]<<8)|((buffer)[0]);
 
-    mem = GetMemoryModuleFromAddress(virtualAddr);
+    mem = getMemoryModuleFromAddress(virtualAddr);
 
     if ( mem == 0 )
     {
@@ -83,7 +83,7 @@ void UpdateMemoryModule(UInt8 *buffer, UInt8 size)
     offset = virtualAddr - mem->id ;
     ptr     = mem->ptr + offset;
 
-    //DebugPrintf("Addr 0x%x FoundId 0x%x Off %d MSiz %d Size %d\r\n", currentSlaveModAddr, mem->id, offset, mem->size, size );
+    //debugPrintf("Addr 0x%x FoundId 0x%x Off %d MSiz %d Size %d\r\n", currentSlaveModAddr, mem->id, offset, mem->size, size );
 
     if ( size == 2)
     {

@@ -23,11 +23,11 @@
 extern "C" {
 #endif
     
-extern void InitI2CSoft(void);
+extern void initI2CSoft(void);
 
-extern UInt32 SendBufferToI2CSoft(UInt8 addr, UInt8 *buffer, UInt32 len);
+extern UInt32 sendBufferToI2CSoft(UInt8 addr, UInt8 *buffer, UInt32 len);
 
-extern UInt32 GetBufferFromI2CSoft(UInt8 addr, UInt8 *buffer, UInt32 len);
+extern UInt32 getBufferFromI2CSoft(UInt8 addr, UInt8 *buffer, UInt32 len);
 
     
 #ifdef __cplusplus

@@ -68,25 +68,25 @@ typedef enum _GPIO_DIR_
  * @param pin   GPIO to set
  * @param dir   Direction of the pin
  */
-extern void SetGpioDirection(GPIO_PIN pin, GPIO_DIR dir);
+extern void setGpioDirection(GPIO_PIN pin, GPIO_DIR dir);
 
 /** @brief Set value of GPIO (0 or 1)
  *
  * @param pin   GPIO to set
  * @param bit   value
  */
-extern void SetGpioValue(GPIO_PIN pin, UInt32 bit);
+extern void setGpioValue(GPIO_PIN pin, UInt32 bit);
 
 /** @brief Get value of a GPIO
  *
  * @param pin   GPIO to get
  * @return Value of the pin (0 or 1)
  */
-extern UInt32 GetGpioValue(GPIO_PIN pin);
+extern UInt32 getGpioValue(GPIO_PIN pin);
 
 
 // TODO works only for lpc13xx
-extern void EnableGpioHysteresis(GPIO_PIN pin);
+extern void enableGpioHysteresis(GPIO_PIN pin);
 
 /** @brief Enable an Kernel event on a GPIO pin
  *
@@ -95,7 +95,7 @@ extern void EnableGpioHysteresis(GPIO_PIN pin);
  * @param callback      event callback
  * @return
  */
-extern void EnableEventOnGpio(GPIO_PIN pin, GPIO_EDGE edge, KEventCallback callback);
+extern void enableEventOnGpio(GPIO_PIN pin, GPIO_EDGE edge, KEventCallback callback);
 
 
 /** @brief IRQ callback type */
@@ -103,24 +103,24 @@ typedef void (*GpioIrqCallback)(UInt32 gpioEvent, UInt32 gpioEdge);
 
 
 // set the gpio irq callback
-extern void SetGpioIrqCallback(GpioIrqCallback callback);
+extern void setGpioIrqCallback(GpioIrqCallback callback);
 
 
 // enable irq "by the hand"
 // Use this in 2 cases:
 // - you have previously disable irq
 // - you want manage your own irq without event, you have to set your own gpio irq callback !
-extern void EnableGpioIrq(GPIO_PIN pin, GPIO_EDGE edge);
+extern void enableGpioIrq(GPIO_PIN pin, GPIO_EDGE edge);
 
 
 // disable only the irq, the event object is not deactivated !
 
 #ifdef MCU_IS_LPC13XX
-extern void DisableGpioIrq(GPIO_PIN pin);
+extern void disableGpioIrq(GPIO_PIN pin);
 #endif
 
 #ifdef MCU_IS_LPC17XX
-extern void DisableGpioIrq(GPIO_PIN pin, GPIO_EDGE edge);
+extern void disableGpioIrq(GPIO_PIN pin, GPIO_EDGE edge);
 #endif 
 
 #ifdef __cplusplus

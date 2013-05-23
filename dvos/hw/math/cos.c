@@ -48,7 +48,7 @@ static const Int16 arrayCosQ15 [259] = {
 
 
 
-IntQ15 GetCosFromRadianQ15(RadianQ15 x) 
+IntQ15 getCosFromRadianQ15(RadianQ15 x) 
 { 
     Int32 cosVal;                                  /* Temporary variables output */ 
     Int16 *tablePtr;                               /* Pointer to table */ 

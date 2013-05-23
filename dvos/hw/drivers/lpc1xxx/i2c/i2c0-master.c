@@ -198,135 +198,135 @@ void i2c0_write_wait(UInt8 data)
 
 UInt32 i2c0_read(UInt8 *data)
 {
-	//check if I2C Data register can be accessed
+    //check if I2C Data register can be accessed
     if((I2C_I2CONSET & 0x08) != 0)    //SI = 1
     {
-		//read data
-		*data = I2C_I2DAT;
-		return I2C_OK;
+        //read data
+        *data = I2C_I2DAT;
+        return I2C_OK;
     }
     else
     {
-		//No data available
-		return I2C_EMPTY;
+        //No data available
+        return I2C_EMPTY;
     }
 }
 
 
-void InitI2C0(I2C_SPEED speed)
+void initI2C0(I2C_SPEED speed)
 {
-	UInt32 reg;
+    UInt32 reg;
 
-	I2C_I2CONCLR = 0xFF;
+    I2C_I2CONCLR = 0xFF;
 
-	//  set pinouts as scl and sda
-        LPC_PINCON->PINSEL1 |= BIT(22);
-        LPC_PINCON->PINSEL1 |= BIT(24);
-        
-        // how to compute i2c clock bus = PCLKI2C / (I2C_SCLL + I2C_SCLH)
-        
-        // i2c frequency set to 100 MHz
-        LPC_SC->PCLKSEL0 |= BITS(14,1);
-        
-	switch(speed)
-	{
-	case I2C_400_KHZ:
-		reg = 125;
-		break;
-	case I2C_100_KHZ:
-        default:
-		reg = 500;
-		break;
-	}
+    //  set pinouts as scl and sda
+    LPC_PINCON->PINSEL1 |= BIT(22);
+    LPC_PINCON->PINSEL1 |= BIT(24);
 
-	I2C_I2SCLL=reg;
-	I2C_I2SCLH=reg;
+    // how to compute i2c clock bus = PCLKI2C / (I2C_SCLL + I2C_SCLH)
 
-        // active master mode on i2c bus
-	I2C_I2CONSET = 0x40;
+    // i2c frequency set to 100 MHz
+    LPC_SC->PCLKSEL0 |= BITS(14,1);
+
+    switch(speed)
+    {
+    case I2C_400_KHZ:
+            reg = 125;
+            break;
+    case I2C_100_KHZ:
+    default:
+            reg = 500;
+            break;
+    }
+
+    I2C_I2SCLL=reg;
+    I2C_I2SCLH=reg;
+
+    // active master mode on i2c bus
+    I2C_I2CONSET = 0x40;
 }
 
-UInt32 SendBufferToI2C0(UInt8 addr, UInt8 *buffer, UInt32 len)
+UInt32 sendBufferToI2C0(UInt8 addr, UInt8 *buffer, UInt32 len)
 {
-	UInt32 i;
-	//send start condition
-	if(i2c0_start()!=I2C_OK)
-	{
-	    //i2c0_stop();
-	    //DebugPrintf("SendBufferToI2C0.i2c0_start\r\n");
-		return I2C_ERROR_START;
-	}
+    UInt32 i;
+    //send start condition
+    if(i2c0_start()!=I2C_OK)
+    {
+        //i2c0_stop();
+        //DebugPrintf("SendBufferToI2C0.i2c0_start\r\n");
+            return I2C_ERROR_START;
+    }
 
-	//send address
-	SEND_AND_WAIT(addr);
+    //send address
+    SEND_AND_WAIT(addr);
 
-	for(i=0;i<len;i++)
-	{
-		SEND_AND_WAIT(buffer[i]);
-	}
+    for(i=0;i<len;i++)
+    {
+            SEND_AND_WAIT(buffer[i]);
+    }
 
-	i2c0_stop();
+    i2c0_stop();
 
     //DebugPrintf("SendBufferToI2C0 I2C_OK\r\n");
-	return I2C_OK;
+    return I2C_OK;
 }
 
-UInt32 GetBufferFromI2C0(UInt8 addr, UInt8 *buffer, UInt32 len)
+UInt32 getBufferFromI2C0(UInt8 addr, UInt8 *buffer, UInt32 len)
 {
-	UInt32 i;
-	UInt8 status;
+    UInt32 i;
+    UInt8 status;
     UInt8 *ptr;
 
     ptr = buffer;
-	if( i2c0_start()!=I2C_OK)
-	{
-	    //DebugPrintf("GetBufferFromI2C0.i2c0_start I2C_ERROR\r\n");
-	    //i2c0_stop();
-		return I2C_ERROR;
-	}
+    if( i2c0_start()!=I2C_OK)
+    {
+        //DebugPrintf("GetBufferFromI2C0.i2c0_start I2C_ERROR\r\n");
+        //i2c0_stop();
+            return I2C_ERROR;
+    }
 
     addr = addr|1;
-	while( i2c0_write(addr) == I2C_BUSY);
+    while( i2c0_write(addr) == I2C_BUSY);
 
-	for(i=0;i<len;i++)
-	{
-		while(1)
-		{
-			GET_I2C_STATUS();
+    for(i=0;i<len;i++)
+    {
+            while(1)
+            {
+                    GET_I2C_STATUS();
 
-			/*
-			 * SLA+R transmitted, ACK received or
-			 * SLA+R transmitted, ACK not received
-			 * data byte received in master mode, ACK transmitted
-			 */
-			if((status == 0x40 ) || (status == 0x48 ) || (status == 0x50 ))
-			{
-				if(i==len-1)
-				{
-					SEND_NACK();
-				}
-				else
-				{
-					SEND_ACK();
-				}
+                    /*
+                     * SLA+R transmitted, ACK received or
+                     * SLA+R transmitted, ACK not received
+                     * data byte received in master mode, ACK transmitted
+                     */
+                    if((status == 0x40 ) || (status == 0x48 ) || (status == 0x50 ))
+                    {
+                            if(i==len-1)
+                            {
+                                    SEND_NACK();
+                            }
+                            else
+                            {
+                                    SEND_ACK();
+                            }
 
-				while(i2c0_read(ptr)==I2C_EMPTY);
+                            while(i2c0_read(ptr)==I2C_EMPTY);
 
-				ptr++;
-				break;
+                            ptr++;
+                            break;
 
-			}
-			else if(status != 0xf8 )
-			{
-				i2c0_stop();
-                //DebugPrintf("GetBufferFromI2C0 I2C_ERROR\r\n");
-				return I2C_ERROR;
-			}
+                    }
+                    else if(status != 0xf8 )
+                    {
+                            i2c0_stop();
+            //DebugPrintf("GetBufferFromI2C0 I2C_ERROR\r\n");
+                            return I2C_ERROR;
+                    }
 
-		}//while(0)
-	}//for
+            }//while(0)
+    }//for
 
-	i2c0_stop();
+    i2c0_stop();
 
-	return I2C_OK;
+    return I2C_OK;
 }

@@ -21,7 +21,7 @@
 
 //----------------------------- public functions
 
-void InitMcuAnalog(UInt32 analogChannel)
+void initMcuAnalog(UInt32 analogChannel)
 {
     //bit0 to bit2 : pin configuration  
     //bit7 : ADMODE set to 0

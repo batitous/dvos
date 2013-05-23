@@ -110,13 +110,13 @@ void EINT3_IRQHandler(void)
 //----------------------------- public functions
 
 
-void SetGpioIrqCallback(GpioIrqCallback callback)
+void setGpioIrqCallback(GpioIrqCallback callback)
 {
     gpioIrqCallback = callback;
 }
 
 
-void EnableGpioIrq(GPIO_PIN pin, GPIO_EDGE edge)
+void enableGpioIrq(GPIO_PIN pin, GPIO_EDGE edge)
 {
     UInt32 thepin = pin & 0xFFFF;
     UInt32 port = pin & 0xFFFF0000;
@@ -156,7 +156,7 @@ void EnableGpioIrq(GPIO_PIN pin, GPIO_EDGE edge)
     NVIC_EnableIRQ(EINT3_IRQn);
 }
 
-void DisableGpioIrq(GPIO_PIN pin, GPIO_EDGE edge)
+void disableGpioIrq(GPIO_PIN pin, GPIO_EDGE edge)
 {
     UInt32 thepin = pin & 0xFFFF;
     UInt32 port = pin & 0xFFFF0000;

@@ -219,7 +219,7 @@ static UInt8 i2c_soft_receive_bit(void)
 
 //-------------------------- public functions
 
-void InitI2CSoft(void)
+void initI2CSoft(void)
 {
     initI2cIO();
     
@@ -238,7 +238,7 @@ void InitI2CSoft(void)
     
 }
 
-UInt32 SendBufferToI2CSoft(UInt8 addr, UInt8 *buffer, UInt32 len)
+UInt32 sendBufferToI2CSoft(UInt8 addr, UInt8 *buffer, UInt32 len)
 {
     UInt32 i;
     
@@ -256,7 +256,7 @@ UInt32 SendBufferToI2CSoft(UInt8 addr, UInt8 *buffer, UInt32 len)
     return 0;
 }
 
-UInt32 GetBufferFromI2CSoft(UInt8 addr, UInt8 *buffer, UInt32 len)
+UInt32 getBufferFromI2CSoft(UInt8 addr, UInt8 *buffer, UInt32 len)
 {
     UInt32 i;
     

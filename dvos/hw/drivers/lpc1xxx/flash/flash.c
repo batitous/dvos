@@ -122,7 +122,7 @@ UInt32 userFlashCounter;
 UInt16 userFlashSector[2];
 
 
-void InitUserFlash(UInt32 sectorStart, UInt32 sectorEnd)
+void initUserFlash(UInt32 sectorStart, UInt32 sectorEnd)
 {
     userFlashAddress = 0;
     userFlashCounter = 0;
@@ -132,17 +132,17 @@ void InitUserFlash(UInt32 sectorStart, UInt32 sectorEnd)
 }
 
 
-UInt32 GetUserFlashSize(void)
+UInt32 getUserFlashSize(void)
 {
     return (sector_end_map[userFlashSector[1]] - sector_start_map[userFlashSector[0]])  +1;
 }
 
-UInt8 * GetUserFlashBuffer(void)
+UInt8 * getUserFlashBuffer(void)
 {
     return sector_start_map[userFlashSector[0]];
 }
 
-Bool EraseAllUserFlashSector(void)
+Bool eraseAllUserFlashSector(void)
 {
     if(iapPrepareSector(userFlashSector[0],userFlashSector[1])==False)
         return False;
@@ -153,7 +153,7 @@ Bool EraseAllUserFlashSector(void)
     return True;
 }
 
-Bool EraseFlashSector(UInt32 flashAddr)
+Bool eraseFlashSector(UInt32 flashAddr)
 {
     UInt32 i;
  
@@ -188,7 +188,7 @@ Bool EraseFlashSector(UInt32 flashAddr)
     return False;
 }
 
-Bool WriteBufferToFlash(UInt32 * flashAddrDestination, UInt8 * src, UInt32 size)
+Bool writeBufferToFlash(UInt32 * flashAddrDestination, UInt8 * src, UInt32 size)
 {
     UInt32 i;
     
@@ -207,7 +207,7 @@ Bool WriteBufferToFlash(UInt32 * flashAddrDestination, UInt8 * src, UInt32 size)
     if( userFlashCounter == FLASH_BUFFER_SIZE)
     {
         // We have accumulated enough bytes to trigger a flash write
-        if(EraseFlashSector((UInt32)userFlashAddress)==False)
+        if(eraseFlashSector((UInt32)userFlashAddress)==False)
         {
             return False;
         }

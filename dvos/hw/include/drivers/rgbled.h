@@ -52,19 +52,19 @@ typedef enum _rgb_fixed_color_
 
 
 
-extern void InitRgbLed(void);
+extern void initRgbLed(void);
 
 
-extern void SetColorToRgbLed(UInt8 red, UInt8 green, UInt8 blue);
+extern void setColorToRgbLed(UInt8 red, UInt8 green, UInt8 blue);
 
 
-extern void SetPredefinedColorToRgbLed(RgbLedFixedColor c);
+extern void setPredefinedColorToRgbLed(RgbLedFixedColor c);
 
 
-extern void SetRgbLedSequence(UInt32 sequenceNumber, RgbLedFixedColor c, UInt32 time);
+extern void setRgbLedSequence(UInt32 sequenceNumber, RgbLedFixedColor c, UInt32 time);
 
 
-extern void StartRgbLedSequence(UInt32 number, Bool loop);
+extern void startRgbLedSequence(UInt32 number, Bool loop);
 
 
 

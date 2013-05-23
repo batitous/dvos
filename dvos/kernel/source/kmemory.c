@@ -51,7 +51,7 @@
 
 
 #ifdef USE_MEMORY_TRACE
-#   define TRACE_MEM(str)	DebugPrintf str
+#   define TRACE_MEM(str)	debugPrintf str
 #else
 #   define TRACE_MEM(str)
 #endif

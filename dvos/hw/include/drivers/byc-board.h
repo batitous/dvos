@@ -24,13 +24,13 @@ extern "C" {
 #endif
     
     
-extern void SetMainPowerSupply(Bool enable);
+extern void setMainPowerSupply(Bool enable);
 
 // micro volts
-extern UInt32 GetBatteryVoltage(void);
+extern UInt32 getBatteryVoltage(void);
 
 // mA
-extern UInt32 GetCurrentConsumption(void);
+extern UInt32 getCurrentConsumption(void);
 
 #ifdef __cplusplus
  }

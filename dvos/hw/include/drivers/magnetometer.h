@@ -33,16 +33,16 @@ typedef struct _magnetics_raw_values_
 } MagneticRawValue;
 
 
-extern Bool InitMagnetometer(void);
+extern Bool initMagnetometer(void);
 
-extern Bool GetMagneticValue(MagneticRawValue * rawvalue, MagneticRawValue * value/*, UInt8* calibratestate*/);
+extern Bool getMagneticValue(MagneticRawValue * rawvalue, MagneticRawValue * value/*, UInt8* calibratestate*/);
 
 extern UInt8 getTemperature(void);
 
 
-extern void StartMagnetometerCalibration(void);
+extern void startMagnetometerCalibration(void);
 
-extern void StopMagnetometerCalibration(void);
+extern void stopMagnetometerCalibration(void);
 
 #ifdef __cplusplus
  }

@@ -19,7 +19,7 @@
 #include "../include/libs-hardware.h"
 
 
-void EnableGpioHysteresis(GPIO_PIN pin)
+void enableGpioHysteresis(GPIO_PIN pin)
 {
     
     // to add your own GPIO Hysteresis, go to LPC13XX datasheet at chapter "I/O Configuration"

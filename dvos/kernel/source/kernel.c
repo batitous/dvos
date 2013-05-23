@@ -467,7 +467,7 @@ KThread * newThread( void (*userCode)(void), UInt32 stackSize, UInt8 cpuTime, UI
     
     insertThreadToReady(thread);
 
-//    DebugPrintf("create thread stack at 0x%x\r\n", thread->stack );
+//    debugPrintf("create thread stack at 0x%x\r\n", thread->stack );
     
     return thread;
 }
@@ -553,7 +553,7 @@ void setTaskAsBlocked(void)
         : : "r" ((UInt32)&tasksBlocked) );
 }
 
-UInt32 GetCurrentTimeOfKernel(void)
+UInt32 getCurrentTimeOfKernel(void)
 {
     return tickOfKernel;
 }
@@ -566,7 +566,7 @@ void dumpKernel(void)
     UInt32 percent = 0;
     KThread * thread = (KThread *)(tasksReady.next);
 
-    DebugPrintf("[%6d][ Dump Kernel State: current thread %x ]\r\n", tickOfKernel, currentTask);
+    debugPrintf("[%6d][ Dump Kernel State: current thread %x ]\r\n", tickOfKernel, currentTask);
 /*    while( thread != (KThread *)&tasksReady)
     {
         total += thread->cpuUsage;
@@ -581,11 +581,11 @@ void dumpKernel(void)
     }
 */
     thread = (KThread *)(tasksReady.next);
-    DebugPrintf("Thread     Stack     Priority Quantum     Cpu used   Stack Used\r\n");
+    debugPrintf("Thread     Stack     Priority Quantum     Cpu used   Stack Used\r\n");
     while( thread != (KThread *)&tasksReady)
     {
         percent = (thread->cpuUsage); // * 100)/ total;
-    DebugPrintf("%x   %4x   %3d       %2d (%3d)     %5d    %2d\r\n", thread, thread->stack, thread->priority, thread->quantum,thread->cpuRequest, percent, thread->stackUsage);
+    debugPrintf("%x   %4x   %3d       %2d (%3d)     %5d    %2d\r\n", thread, thread->stack, thread->priority, thread->quantum,thread->cpuRequest, percent, thread->stackUsage);
 
         thread = thread->next;
     }
@@ -594,7 +594,7 @@ void dumpKernel(void)
     while( thread != (KThread *)&tasksWaiting)
     {
         percent = (thread->cpuUsage);// * 100)/ total;
-        DebugPrintf("%x   %4x   %3d       %2d (%3d)    %5d    %2d -> waiting\r\n", thread, thread->stack, thread->priority, thread->quantum, thread->cpuRequest, percent,thread->stackUsage);
+        debugPrintf("%x   %4x   %3d       %2d (%3d)    %5d    %2d -> waiting\r\n", thread, thread->stack, thread->priority, thread->quantum, thread->cpuRequest, percent,thread->stackUsage);
 
         thread = thread->next;
     }
@@ -603,7 +603,7 @@ void dumpKernel(void)
     while( thread != (KThread *)&tasksBlocked)
     {
         percent = (thread->cpuUsage);// * 100)/ total;
-        DebugPrintf("%x   %4x   %3d       %2d (%3d)    %5d    %2d -> blocked\r\n", thread, thread->stack, thread->priority, thread->quantum, thread->cpuRequest, percent,thread->stackUsage);
+        debugPrintf("%x   %4x   %3d       %2d (%3d)    %5d    %2d -> blocked\r\n", thread, thread->stack, thread->priority, thread->quantum, thread->cpuRequest, percent,thread->stackUsage);
 
         thread = thread->next;
     }

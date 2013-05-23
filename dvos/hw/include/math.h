@@ -39,7 +39,7 @@ typedef Int16   RadianQ15;
  * @param radian        A Q15 value in radian
  * @return Degree value (between 0 and 360) from the radian value.
  */
-extern Int16 GetDegreeFromRadian(IntQ15 radian);
+extern Int16 getDegreeFromRadian(IntQ15 radian);
 
 
 /** @brief Get radian value from degree value.
@@ -57,7 +57,7 @@ extern RadianQ15 getRadianQ15FromDegree(Int16 degree);
  * @param[in] x Scaled input value in radians. 
  * @return  cos(x). 
  */ 
-extern IntQ15 GetCosFromRadianQ15( RadianQ15 x);
+extern IntQ15 getCosFromRadianQ15( RadianQ15 x);
 
 
 /** @brief Fast approximation to the trigonometric sine function for Q15 data.
@@ -67,7 +67,7 @@ extern IntQ15 GetCosFromRadianQ15( RadianQ15 x);
  * @param[in] x Scaled input value in radians.  
  * @return  sin(x).
  */
-extern IntQ15 GetSinFromRadianQ15(RadianQ15 x);
+extern IntQ15 getSinFromRadianQ15(RadianQ15 x);
 
 
 /** @brief Get cosine from opposed and adjacent axis.
@@ -78,7 +78,7 @@ extern IntQ15 GetSinFromRadianQ15(RadianQ15 x);
  * @param adjacent      Y
  * @return Q15 value.
  */
-extern IntQ15 GetCosFromXY(Int16 opposed, Int16 adjacent );
+extern IntQ15 getCosFromXY(Int16 opposed, Int16 adjacent );
 
 
 /** @brief Get sine from opposed and adjacent axis.
@@ -89,7 +89,7 @@ extern IntQ15 GetCosFromXY(Int16 opposed, Int16 adjacent );
  * @param adjacent      Y
  * @return Q15 value.
  */
-extern IntQ15 GetSinFromXY(Int16 opposed, Int16 adjacent);
+extern IntQ15 getSinFromXY(Int16 opposed, Int16 adjacent);
 
 
 /** Get Atan
@@ -98,7 +98,7 @@ extern IntQ15 GetSinFromXY(Int16 opposed, Int16 adjacent);
  * @param ix
  * @return degrees times 100 (0.0 to 90.0 degrees)
  */
-extern Int16 GetAtan(Int16 iy, Int16 ix);
+extern Int16 getAtan(Int16 iy, Int16 ix);
 
 /** Get Atan2
  * 
@@ -106,10 +106,10 @@ extern Int16 GetAtan(Int16 iy, Int16 ix);
  * @param ix
  * @return degrees times 100 (0.0 to 90.0 degrees)
  */
-extern Int16 GetAtan2(Int16 iy, Int16 ix) ;
+extern Int16 getAtan2(Int16 iy, Int16 ix) ;
 
 
-extern UInt32 GetSqrt(UInt32 x);
+extern UInt32 getSqrt(UInt32 x);
 
 
 extern Int32 iTrig(Int32 ix, Int32 iy); 

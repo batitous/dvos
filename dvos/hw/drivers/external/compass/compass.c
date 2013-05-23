@@ -25,7 +25,7 @@
 
 
 
-void ComputeOrientation(Orientation* out, MagneticRawValue* mag, AccelerationRawValue* accel)
+void computeOrientation(Orientation* out, MagneticRawValue* mag, AccelerationRawValue* accel)
 {
     /* stack variables */
     /* iBpx, iBpy, iBpz: the three components of the magnetometer sensor */

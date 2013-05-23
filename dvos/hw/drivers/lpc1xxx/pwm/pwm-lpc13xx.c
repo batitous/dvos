@@ -185,7 +185,7 @@ void setPwmCycle(LPC_TMR_TypeDef * timer, PWM pwmSelected, UInt32 cycle)
 //-------------------------- public functions:
 
 
-void InitPwm(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected, UInt32 widthInUs, UInt32 widthDivider, UInt32 percentage)
+void initPwm(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected, UInt32 widthInUs, UInt32 widthDivider, UInt32 percentage)
 {
     LPC_TMR_TypeDef * timer = 0;
     UInt32 widthPwm, cycle;
@@ -264,7 +264,7 @@ void InitPwm(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected, UInt32 wi
     
 }
 
-void EnablePwm(PWMTIMER timerType, TIMER timerSelected, Bool start)
+void enablePwm(PWMTIMER timerType, TIMER timerSelected, Bool start)
 {
     LPC_TMR_TypeDef * timer = 0;
     
@@ -305,7 +305,7 @@ void EnablePwm(PWMTIMER timerType, TIMER timerSelected, Bool start)
     }
 }
 
-void SetPwmDutyCycle(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected, UInt32 percentage)
+void setPwmDutyCycle(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected, UInt32 percentage)
 {
     LPC_TMR_TypeDef * timer = 0;
     UInt32 widthPwm;
@@ -343,7 +343,7 @@ void SetPwmDutyCycle(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected, U
 }
 
 
-void SetPwmWidth(PWMTIMER timerType, TIMER timerSelected, UInt32 widthInUs)
+void setPwmWidth(PWMTIMER timerType, TIMER timerSelected, UInt32 widthInUs)
 {
     LPC_TMR_TypeDef * timer = 0;
     UInt32 widthPwm;

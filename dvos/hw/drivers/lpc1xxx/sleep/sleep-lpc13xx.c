@@ -22,7 +22,7 @@
 
 //-------------------------- public functions
 
-void SetMcuToSleep(SLEEPMODE mode)
+void setMcuToSleep(SLEEPMODE mode)
 {
     if(SLEEP_DEFAULT==mode)
     {
@@ -81,7 +81,7 @@ void SetMcuToSleep(SLEEPMODE mode)
         LPC_SYSCON->PDAWAKECFG = LPC_SYSCON->PDRUNCFG;
         
         // Initialize the wakeup source
-        InitWakeUp();
+        initWakeUp();
         
         // Set Deep Sleep mode
         SETBIT(SCB->SCR,2);

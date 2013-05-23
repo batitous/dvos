@@ -44,7 +44,7 @@ typedef struct _mem_modules_
  * @param number        Number of modules.
  * @param func          Pointer to a function.
  */
-extern void InitMemoryModule(UInt32 number, MemProtocolSendCallback func);
+extern void initMemoryModule(UInt32 number, MemProtocolSendCallback func);
 
 
 /** @brief Add a module to the memory protocol.
@@ -54,7 +54,7 @@ extern void InitMemoryModule(UInt32 number, MemProtocolSendCallback func);
  * @param objectSize    Size of your object.
  * @param update        Pointer to function for update your object.
  */
-extern void AddMemoryModule(UInt16 virtualAddr, UInt8 * objectAddr, UInt32 objectSize, MemProtocolUpdateCallback update);
+extern void addMemoryModule(UInt16 virtualAddr, UInt8 * objectAddr, UInt32 objectSize, MemProtocolUpdateCallback update);
 
 
 /** @brief Get a module from an address 
@@ -62,7 +62,7 @@ extern void AddMemoryModule(UInt16 virtualAddr, UInt8 * objectAddr, UInt32 objec
  * @param address       Virtual address of the module
  * @return Pointer to a valid memory module or 0 if error.
  */
-extern MemoryModule * GetMemoryModuleFromAddress(UInt16 address);
+extern MemoryModule * getMemoryModuleFromAddress(UInt16 address);
 
 
 /** @brief Update the memory module.
@@ -78,7 +78,7 @@ extern MemoryModule * GetMemoryModuleFromAddress(UInt16 address);
  * @param buffer        Pointer to a buffer that contains memory data.
  * @param size          Size of buffer.
  */
-extern void UpdateMemoryModule(UInt8 *buffer, UInt8 size);
+extern void updateMemoryModule(UInt8 *buffer, UInt8 size);
 
 
     

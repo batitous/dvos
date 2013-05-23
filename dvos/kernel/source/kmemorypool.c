@@ -25,7 +25,7 @@
 //#define MEMPOOL_USE_DEBUG
 
 #ifdef MEMPOOL_USE_DEBUG
-#   define TRACE_MEMPOOL(str)	DebugPrintf str
+#   define TRACE_MEMPOOL(str)	debugPrintf str
 #else
 #   define TRACE_MEMPOOL(str)
 #endif

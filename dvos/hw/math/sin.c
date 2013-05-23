@@ -45,7 +45,7 @@ static const Int16 sinTableQ15[259] = {
     0xfcdc, 0x0, 0x324
 };
 
-IntQ15 GetSinFromRadianQ15(RadianQ15 x)
+IntQ15 getSinFromRadianQ15(RadianQ15 x)
 {
     Int32 sinVal;                                  /* Temporary variables output */
     Int16 *tablePtr;                               /* Pointer to table */

@@ -36,7 +36,7 @@ void TIMER_16_1_IRQn_Handler(void)
 
 //-------------------------- public functions
 
-Bool InitTimer16(TIMER timerSelected, UInt32 waitInUs)
+Bool initTimer16(TIMER timerSelected, UInt32 waitInUs)
 {
     LPC_TMR_TypeDef * timer;
     UInt32 waitInTick;

@@ -42,28 +42,28 @@ static Bool executeEepromCommand(UInt32 command, UInt32 addr, UInt8 * buffer, UI
 
 //--------------------- public functions:
 
-Bool ReadByteFromEeprom(UInt32 addr, UInt8* data)
+Bool readByteFromEeprom(UInt32 addr, UInt8* data)
 {
     return executeEepromCommand(IAP_READ_EEPROM,addr,data,1);
 }
 
-Bool ReadBufferFromEeprom(UInt32 addr, UInt8* buffer, UInt32 size)
+Bool readBufferFromEeprom(UInt32 addr, UInt8* buffer, UInt32 size)
 {
     return executeEepromCommand(IAP_READ_EEPROM,addr,buffer,size);
 }
 
 
-Bool WriteByteToEeprom(UInt32 addr, UInt8 data)
+Bool writeByteToEeprom(UInt32 addr, UInt8 data)
 {
     return executeEepromCommand(IAP_WRITE_EEPROM,addr,&data,1);
 }
 
-Bool WriteBufferToEeprom(UInt32 addr, UInt8* buffer, UInt32 size)
+Bool writeBufferToEeprom(UInt32 addr, UInt8* buffer, UInt32 size)
 {
     return executeEepromCommand(IAP_WRITE_EEPROM,addr,buffer,size);
 }
 
-Bool EraseEeprom()
+Bool eraseEeprom()
 {
     return False;
 }

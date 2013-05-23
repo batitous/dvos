@@ -47,7 +47,7 @@ const short K2 = (short) 6113;
 const short K3 = (short) -1584;
 
 /* calculates 100*atan(iy/ix) range 0 to 9000 for all ix, iy positive in range 0 to 32767 */
-Int16 GetAtan(Int16 iy, Int16 ix)
+Int16 getAtan(Int16 iy, Int16 ix)
 {
 	short iAngle; /* angle in degrees times 100 */
 	short iRatio; /* ratio of iy / ix or vice versa */
@@ -92,7 +92,7 @@ Int16 GetAtan(Int16 iy, Int16 ix)
 }
 
 /* calculates 100*atan2(iy/ix)=100*atan2(iy,ix) in deg for ix, iy in range -32768 to 32767 */
-Int16 GetAtan2(Int16 iy, Int16 ix)
+Int16 getAtan2(Int16 iy, Int16 ix)
 {
 	short iResult; /* angle in degrees times 100 */
 
@@ -105,16 +105,16 @@ Int16 GetAtan2(Int16 iy, Int16 ix)
 
 	/* check for quadrants */
 	if ((ix >= (short) 0) && (iy >= (short) 0)) /* range 0 to 90 degrees */
-		iResult = GetAtan(iy, ix);
+		iResult = getAtan(iy, ix);
 		
 	else if ((ix <= (short) 0) && (iy >= (short) 0)) /* range 90 to 180 degrees */
-		iResult = (short)((long) 18000 - (long) GetAtan(iy, (short)-ix));
+		iResult = (short)((long) 18000 - (long) getAtan(iy, (short)-ix));
 		
 	else if ((ix <= (short) 0) && (iy <= (short) 0)) /* range -180 to -90 degrees */
-		iResult = (short)((long) -18000 + (long) GetAtan((short)-iy, (short)-ix));
+		iResult = (short)((long) -18000 + (long) getAtan((short)-iy, (short)-ix));
 		
 	else /* ix >=0 and iy <= 0 giving range -90 to 0 degrees */
-		iResult = (short)(-GetAtan((short)-iy, ix));
+		iResult = (short)(-getAtan((short)-iy, ix));
 
 	return (iResult);
 }

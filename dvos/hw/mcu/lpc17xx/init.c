@@ -25,7 +25,7 @@
 //
 
 //this code is called at cpu reset: don't call it directly!
-void InitLowLevelCpu(void)
+void initLowLevelCpu(void)
 {    
 	//====== CONFIGURE CLOCK & OSCILLATOR ====//
 

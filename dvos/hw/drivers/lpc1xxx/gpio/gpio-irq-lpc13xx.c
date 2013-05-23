@@ -92,13 +92,13 @@ void EINT0_IRQn_Handler(void)
 
 //----------------------------- public functions
 
-void SetGpioIrqCallback(GpioIrqCallback callback)
+void setGpioIrqCallback(GpioIrqCallback callback)
 {
     gpioIrqCallback = callback;
 }
 
 
-void EnableGpioIrq(GPIO_PIN pin, GPIO_EDGE edge)
+void enableGpioIrq(GPIO_PIN pin, GPIO_EDGE edge)
 {
     LPC_GPIO_TypeDef * gpio = getGpioPort(pin);
     UInt32 thepin = pin & 0xFFFF;
@@ -149,7 +149,7 @@ void EnableGpioIrq(GPIO_PIN pin, GPIO_EDGE edge)
     }
 }
 
-void DisableGpioIrq(GPIO_PIN pin)
+void disableGpioIrq(GPIO_PIN pin)
 {
     LPC_GPIO_TypeDef * gpio = getGpioPort(pin);
     UInt32 thepin = pin & 0xFFFF;

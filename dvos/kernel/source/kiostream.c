@@ -30,8 +30,8 @@
 #ifdef KERNEL_USE_DEBUG
 void dumpIOStream(KIOStream * stream)
 {
-    DebugPrintf("== io stream: read %d write %d\r\n",stream->read,stream->write);
-    DebugPrintf("== io th %x buf %x\r\n",stream->receiver,stream->buffer);
+    debugPrintf("== io stream: read %d write %d\r\n",stream->read,stream->write);
+    debugPrintf("== io th %x buf %x\r\n",stream->receiver,stream->buffer);
 }
 #endif
 

@@ -39,17 +39,17 @@ UInt32 getIRQNumber(UInt32 reg)
 
 //----------------------------- public functions
 
-void EnableEventOnGpio(GPIO_PIN pin, GPIO_EDGE edge, KEventCallback callback)
+void enableEventOnGpio(GPIO_PIN pin, GPIO_EDGE edge, KEventCallback callback)
 {
     // encode the event id with pin, edge and event mask
-    if( RegisterEvent( KEVENT_GPIO_MASK | pin /*| edge*/, callback) == False )
+    if( registerEvent( KEVENT_GPIO_MASK | pin /*| edge*/, callback) == False )
     {
         return;
     }
     
-    SetGpioIrqCallback(keventGpioIrqCallback);
+    setGpioIrqCallback(keventGpioIrqCallback);
         
-    SetGpioDirection(pin,GPIO_IN);
-    EnableGpioIrq(pin,edge);
+    setGpioDirection(pin,GPIO_IN);
+    enableGpioIrq(pin,edge);
     
 }

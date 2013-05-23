@@ -35,24 +35,24 @@ typedef enum _timer_
 
 typedef void (*TimerIrqCallback)(void);
 
-extern void SetTimer0Callback(TimerIrqCallback c);
-extern void SetTimer1Callback(TimerIrqCallback c);
+extern void setTimer0Callback(TimerIrqCallback c);
+extern void setTimer1Callback(TimerIrqCallback c);
 
 
-extern void InitTimer32(TIMER timerSelected, UInt32 waitInUs);
-extern void SetTimer32(TIMER timerSelected, UInt32 waitInUs);
-extern void EnableTimer32(TIMER timerSelected, Bool enable);
+extern void initTimer32(TIMER timerSelected, UInt32 waitInUs);
+extern void setTimer32(TIMER timerSelected, UInt32 waitInUs);
+extern void enableTimer32(TIMER timerSelected, Bool enable);
 
 // only on lpc17xx
-extern void WaitTimer32(TIMER timerSelected);
+extern void waitTimer32(TIMER timerSelected);
 
 
-extern void WaitUsPrecise(UInt32 waitInUs);
+extern void waitUsPrecise(UInt32 waitInUs);
 
 // on lpc17xx, McuClock uses the RIT
 // on lpc13xx : McuClock uses the 32 bits TIMER1 !
-extern void InitMcuClock(void);
-extern UInt32 GetMcuClock(void);
+extern void initMcuClock(void);
+extern UInt32 getMcuClock(void);
 
 
 #ifdef __cplusplus

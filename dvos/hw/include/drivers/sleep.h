@@ -35,24 +35,24 @@ typedef enum _sleep_mode
  * 
  * @param mode          Selected sleep (SLEEP_DEEP)
  */
-extern void SetMcuToSleep(SLEEPMODE mode);
+extern void setMcuToSleep(SLEEPMODE mode);
 
 /** @brief Initialize the wakeup source for the hardware 
  * 
  * DONT CALL IT DIRECTLY
  * 
  */
-extern void InitWakeUp(void);
+extern void initWakeUp(void);
 
 
 // Macro for the idle kernel thread 
 // Uses a macro for reduce footprint of kernel (avoid sleep.o linking)
 #ifdef MCU_IS_LPC17XX
-#       define SetMcuToDefaultSleep()  LPC_SC->PCON = 0; SCB->SCR = 0; __WFI();
+#       define setMcuToDefaultSleep()  LPC_SC->PCON = 0; SCB->SCR = 0; __WFI();
 #endif
        
 #ifdef MCU_IS_LPC13XX
-#       define SetMcuToDefaultSleep()    CLRBIT(LPC_PMU->PCON,1); SETBIT(LPC_PMU->PCON,11); CLRBIT(SCB->SCR,2); __WFI();
+#       define setMcuToDefaultSleep()    CLRBIT(LPC_PMU->PCON,1); SETBIT(LPC_PMU->PCON,11); CLRBIT(SCB->SCR,2); __WFI();
 #endif
 
 #ifdef __cplusplus

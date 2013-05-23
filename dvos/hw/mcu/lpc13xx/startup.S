@@ -201,7 +201,7 @@ __cs3_reset_cortex_m:
 /*    BLX     R0 */
 
 /* call system init in libs-hardware pob-technology */
-    LDR     R0,=InitLowLevelCpu
+    LDR     R0,=initLowLevelCpu
     BLX     R0
 
 /* call main() */

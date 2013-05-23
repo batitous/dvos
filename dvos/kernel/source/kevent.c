@@ -114,7 +114,7 @@ void _postKEvent(UInt32 id, UInt32 message)
     
     kEvents[tmp].id = id;
     kEvents[tmp].message = message;
-    kEvents[tmp].time = GetCurrentTimeOfKernel();
+    kEvents[tmp].time = getCurrentTimeOfKernel();
     
     kEventWrite++;
 }
@@ -169,7 +169,7 @@ Bool registerEvent(UInt32 id, KEventCallback user)
  
     insertSNodeToStart(&kEventRegisters,(KLink *)manager);
 
-//    DebugPrintf("RegisterEvent 0x%x\r\n", id);
+//    debugPrintf("RegisterEvent 0x%x\r\n", id);
     
     return True;
 }

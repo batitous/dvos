@@ -82,12 +82,12 @@ Int32 iTrig(Int32 ix, Int32 iy)
 
 
 
-IntQ15 GetCosFromXY(Int16 opposed, Int16 adjacent )
+IntQ15 getCosFromXY(Int16 opposed, Int16 adjacent )
 {
     return iTrig(opposed , adjacent );
 }
 
-IntQ15 GetSinFromXY(Int16 opposed, Int16 adjacent)
+IntQ15 getSinFromXY(Int16 opposed, Int16 adjacent)
 {
     return iTrig(adjacent , opposed );
 }

@@ -35,20 +35,20 @@ extern void dumpFaultHandler(UInt32 * stack);
 void BusFault_Handler(void)
 {
     // access to invalid memory
-    DebugPrintf("BUS FAULTS EXCEPTION\r\n");
+    debugPrintf("BUS FAULTS EXCEPTION\r\n");
 }
 
 // Memory Management Exception
 void MemManage_Handler(void)
 {
     // write to a read only memory, access to a undefined mpu region
-    DebugPrintf("MEMORY MANAGEMENT EXCEPTION\r\n");
+    debugPrintf("MEMORY MANAGEMENT EXCEPTION\r\n");
 }
 
 // Usage Faults Exception
 void UsageFault_Handler(void)
 {
-    DebugPrintf("USAGE FAULTS EXCEPTION\r\n");
+    debugPrintf("USAGE FAULTS EXCEPTION\r\n");
 }
 
 

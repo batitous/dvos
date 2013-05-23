@@ -78,7 +78,7 @@ void setPwmCycleAndEnableOutput(PWM pwmSelected, UInt32 cycle)
 //-------------------------- public functions:
 
 
-void InitPwm(PWM pwmSelected, UInt32 widthInUs, UInt32 percentage)
+void initPwm(PWM pwmSelected, UInt32 widthInUs, UInt32 percentage)
 {
     UInt32 widthPwm, cycle;
     
@@ -182,7 +182,7 @@ void InitPwm(PWM pwmSelected, UInt32 widthInUs, UInt32 percentage)
     
 }
 
-void EnablePwm(Bool start)
+void enablePwm(Bool start)
 {
     if(start==True)
     {
@@ -198,7 +198,7 @@ void EnablePwm(Bool start)
     }
 }
 
-void SetPwmDutyCycle(PWM pwmSelected, UInt32 percentage)
+void setPwmDutyCycle(PWM pwmSelected, UInt32 percentage)
 {
     UInt32 cycle;
     UInt32 widthPwm = LPC_PWM1->MR0;
@@ -210,7 +210,7 @@ void SetPwmDutyCycle(PWM pwmSelected, UInt32 percentage)
     
 }
 
-void SetPwmWidth(UInt32 widthInUs)
+void setPwmWidth(UInt32 widthInUs)
 {
     UInt32 widthPwm = (KERNEL_CPU_FREQ / 1000) * widthInUs -1;
     
@@ -226,7 +226,7 @@ void SetPwmWidth(UInt32 widthInUs)
 }
 
 
-void InitPwmForSound(UInt32 widthInUs, UInt32 percentage)
+void initPwmForSound(UInt32 widthInUs, UInt32 percentage)
 {
      UInt32 widthPwm, cycle;
     

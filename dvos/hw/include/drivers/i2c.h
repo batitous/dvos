@@ -40,27 +40,27 @@ typedef enum _i2c_speed
 #define I2C_TIMEOUT     6   /**< Operation timeout on i2c bus */
 
 
-extern void InitI2C0(I2C_SPEED speed);
+extern void initI2C0(I2C_SPEED speed);
 
-extern UInt32 SendBufferToI2C0(UInt8 addr, UInt8 *buffer, UInt32 len);
+extern UInt32 sendBufferToI2C0(UInt8 addr, UInt8 *buffer, UInt32 len);
 
-extern UInt32 GetBufferFromI2C0(UInt8 addr, UInt8 *buffer, UInt32 len);
+extern UInt32 getBufferFromI2C0(UInt8 addr, UInt8 *buffer, UInt32 len);
 
-extern void InitI2C1(I2C_SPEED speed);
+extern void initI2C1(I2C_SPEED speed);
 
-extern UInt32 SendBufferToI2C1(UInt8 addr, UInt8 *buffer, UInt32 len);
+extern UInt32 sendBufferToI2C1(UInt8 addr, UInt8 *buffer, UInt32 len);
 
-extern UInt32 GetBufferFromI2C1(UInt8 addr, UInt8 *buffer, UInt32 len);
+extern UInt32 getBufferFromI2C1(UInt8 addr, UInt8 *buffer, UInt32 len);
 
-extern void InitSlaveI2C0(UInt8 address, I2C_SPEED speed);
+extern void initSlaveI2C0(UInt8 address, I2C_SPEED speed);
 
-extern void ReInitSlaveI2C0(UInt8 address, I2C_SPEED speed);
+extern void reInitSlaveI2C0(UInt8 address, I2C_SPEED speed);
 
-extern UInt32 GetBufferFromMasterI2C0(UInt8 *buffer, UInt32 len);
+extern UInt32 getBufferFromMasterI2C0(UInt8 *buffer, UInt32 len);
 
-extern void SetBufferToMasterI2C0(UInt8 *buffer, UInt8 size);
+extern void setBufferToMasterI2C0(UInt8 *buffer, UInt8 size);
 
-extern void HaltSlaveI2C0(void);
+extern void haltSlaveI2C0(void);
 
 #ifdef __cplusplus
 }

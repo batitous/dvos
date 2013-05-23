@@ -117,7 +117,7 @@ void wait100Us(UInt32 delay)
 
 void waitMs(UInt32 delay)
 {
-    Wait100Us(delay*10);
+    wait100Us(delay*10);
 }
 
 KAlarm * newAlarm(UInt32 delay)

@@ -62,7 +62,7 @@ typedef enum _sensor_type_
  * @param pin           Input pin of slave communication.
  * @return 0 if error, else i2c address of the PRS Sensor.
  */
-extern UInt8 InitSensorPRS(SensorType mtype, GPIO_PIN pin);
+extern UInt8 initSensorPRS(SensorType mtype, GPIO_PIN pin);
 
 #ifdef __cplusplus
  }

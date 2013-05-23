@@ -28,19 +28,19 @@ extern "C" {
  * 
  */
 
-extern Bool WriteByteToEeprom(UInt32 addr, UInt8 dat);
+extern Bool writeByteToEeprom(UInt32 addr, UInt8 dat);
 
 
-extern Bool WriteBufferToEeprom(UInt32 addr, UInt8* buffer, UInt32 size);
+extern Bool writeBufferToEeprom(UInt32 addr, UInt8* buffer, UInt32 size);
 
 
-extern Bool ReadByteFromEeprom(UInt32 addr, UInt8* dat);
+extern Bool readByteFromEeprom(UInt32 addr, UInt8* dat);
 
 
-extern Bool ReadBufferFromEeprom(UInt32 addr, UInt8* buffer, UInt32 size);
+extern Bool readBufferFromEeprom(UInt32 addr, UInt8* buffer, UInt32 size);
 
 
-extern Bool EraseEeprom(void);
+extern Bool eraseEeprom(void);
 
 
 

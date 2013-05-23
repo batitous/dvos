@@ -70,7 +70,7 @@ typedef enum _timertype_
  * @param widthDivider          Constant to divide your period (to lower PWM frequency)
  * @param percentage            Duty cycle.
  */
-extern void InitPwm(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected, UInt32 widthInUs, UInt32 widthDivider, UInt32 percentage);
+extern void initPwm(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected, UInt32 widthInUs, UInt32 widthDivider, UInt32 percentage);
         
 /** @brief Set PWM duty cycle.
  * 
@@ -78,9 +78,9 @@ extern void InitPwm(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected, UI
  * @param pwmSelected           Select the PWM you want set the duty cycle.
  * @param percentage            Set duty cycle.
  */
-extern void SetPwmDutyCycle(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected, UInt32 percentage);
+extern void setPwmDutyCycle(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected, UInt32 percentage);
 
-extern void SetPwmWidth(PWMTIMER timerType, TIMER timerSelected, UInt32 widthInUs);
+extern void setPwmWidth(PWMTIMER timerType, TIMER timerSelected, UInt32 widthInUs);
 
 
 /** @brief Enable or Disable PWM.
@@ -88,19 +88,19 @@ extern void SetPwmWidth(PWMTIMER timerType, TIMER timerSelected, UInt32 widthInU
  * @param timerSelected
  * @param start         True to enalbe, False to disable.
  */
-extern void EnablePwm(PWMTIMER timerType, TIMER timerSelected, Bool start);
+extern void enablePwm(PWMTIMER timerType, TIMER timerSelected, Bool start);
 
 #endif
 
 #ifdef MCU_IS_LPC17XX
 
-extern void InitPwm(PWM pwmSelected, UInt32 widthInUs, UInt32 percentage);
+extern void initPwm(PWM pwmSelected, UInt32 widthInUs, UInt32 percentage);
       
-extern void EnablePwm(Bool start);
+extern void enablePwm(Bool start);
 
-extern void SetPwmDutyCycle(PWM pwmSelected, UInt32 percentage);
+extern void setPwmDutyCycle(PWM pwmSelected, UInt32 percentage);
 
-extern void SetPwmWidth(UInt32 widthInUs);
+extern void setPwmWidth(UInt32 widthInUs);
 
 #endif
         

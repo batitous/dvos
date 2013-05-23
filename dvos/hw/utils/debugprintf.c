@@ -40,12 +40,12 @@ void xputs (const char* str)
 	}
 }
 
-void SetDebugInterface(DebugInterfaceCallback callback)
+void setDebugInterface(DebugInterfaceCallback callback)
 {
     debugInterfaceCallback = callback;
 }
 
-void DebugPrintf (
+void debugPrintf (
 	const char*	str,	// Pointer to the format string
 	...					// Optional arguments
 )

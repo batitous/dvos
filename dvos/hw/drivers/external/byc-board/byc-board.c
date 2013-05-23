@@ -26,7 +26,7 @@
 // Wakeup pin P0.22
 
 
-void SetMainPowerSupply(Bool enable)
+void setMainPowerSupply(Bool enable)
 {
     //Supply pin P0.8
 
@@ -44,7 +44,7 @@ void SetMainPowerSupply(Bool enable)
     
 }
 
-UInt32 GetBatteryVoltage(void)
+UInt32 getBatteryVoltage(void)
 {
     // Vbattery = Vana / 0.2769
     
@@ -65,7 +65,7 @@ UInt32 GetBatteryVoltage(void)
     return battery;
 }
 
-UInt32 GetCurrentConsumption(void)
+UInt32 getCurrentConsumption(void)
 {
     // 1 A = 1.2 V
     

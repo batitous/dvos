@@ -91,7 +91,7 @@ LPC_GPIO_TypeDef * getGpioPort(GPIO_PIN pin)
 
 //----------------------------- public functions
 
-void SetGpioDirection(GPIO_PIN pin, GPIO_DIR dir)
+void setGpioDirection(GPIO_PIN pin, GPIO_DIR dir)
 {
     LPC_GPIO_TypeDef * gpio = getGpioPort(pin);
     UInt32 portNumber = getGpioPortNumber(pin);
@@ -177,7 +177,7 @@ void SetGpioDirection(GPIO_PIN pin, GPIO_DIR dir)
 #endif
 }
 
-void SetGpioValue(GPIO_PIN pin, UInt32 bit)
+void setGpioValue(GPIO_PIN pin, UInt32 bit)
 {
     LPC_GPIO_TypeDef * gpio = getGpioPort(pin);
     UInt32 portNumber = getGpioPortNumber(pin);
@@ -199,7 +199,7 @@ void SetGpioValue(GPIO_PIN pin, UInt32 bit)
     }
 }
 
-UInt32 GetGpioValue(GPIO_PIN pin)
+UInt32 getGpioValue(GPIO_PIN pin)
 {
     LPC_GPIO_TypeDef * gpio = getGpioPort(pin);
     UInt32 portNumber = getGpioPortNumber(pin);

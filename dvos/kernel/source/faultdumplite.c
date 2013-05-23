@@ -43,45 +43,45 @@ void dumpFaultHandler(UInt32 * stack)
 
     // print PC LR STACK KERNELTIME
     
-    SendByteToUART0('P');
-    SendByteToUART0('C');
-    SendByteToUART0(':');
+    sendByteToUART0('P');
+    sendByteToUART0('C');
+    sendByteToUART0(':');
     
     PutHexa(string,0,8,0,pc);
     
     for(i=0;i<8;i++)
-        SendByteToUART0(string[i]);
+        sendByteToUART0(string[i]);
     
     
-    SendByteToUART0(' ');
-    SendByteToUART0('L');
-    SendByteToUART0('R');
-    SendByteToUART0(':');
+    sendByteToUART0(' ');
+    sendByteToUART0('L');
+    sendByteToUART0('R');
+    sendByteToUART0(':');
     
     PutHexa(string,0,8,0,lr);
     
     for(i=0;i<8;i++)
-        SendByteToUART0(string[i]);
+        sendByteToUART0(string[i]);
 
-    SendByteToUART0(' ');
-    SendByteToUART0('S');
-    SendByteToUART0('T');
-    SendByteToUART0(':');
+    sendByteToUART0(' ');
+    sendByteToUART0('S');
+    sendByteToUART0('T');
+    sendByteToUART0(':');
     
     PutHexa(string,0,8,0,stack);
     
     for(i=0;i<8;i++)
-        SendByteToUART0(string[i]);
+        sendByteToUART0(string[i]);
     
-    SendByteToUART0(' ');
-    SendByteToUART0('T');
-    SendByteToUART0('h');
-    SendByteToUART0(':');
+    sendByteToUART0(' ');
+    sendByteToUART0('T');
+    sendByteToUART0('h');
+    sendByteToUART0(':');
     
     PutHexa(string,0,8,0,currentTask);
     
     for(i=0;i<8;i++)
-        SendByteToUART0(string[i]);
+        sendByteToUART0(string[i]);
     
     while(1);
 }

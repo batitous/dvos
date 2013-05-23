@@ -112,7 +112,7 @@ void I2C_IRQn_Handler(void)
 		// Write the data to slave device.
 
 		//Write master data in the i2c slave buffer
-                SetByteToStream(i2cStream,LPC_I2C->DAT);
+                setByteToStream(i2cStream,LPC_I2C->DAT);
                 
 		
 
@@ -129,7 +129,7 @@ void I2C_IRQn_Handler(void)
 	// A STOP condition or repeated START condition has been received while still addressed as Slave.
 	case I2C_SRX_STOP_RESTART:
 
-                IrqWakeUpTaskFromStream(i2cStream);
+                irqWakeUpTaskFromStream(i2cStream);
                 
 		i2cWriteIndex = 0;
 
@@ -144,7 +144,7 @@ void I2C_IRQn_Handler(void)
 
 //-------------------------- public functions
 
-void ReInitSlaveI2C0(UInt8 address, I2C_SPEED speed)
+void reInitSlaveI2C0(UInt8 address, I2C_SPEED speed)
 {
     UInt32 reg;
     
@@ -179,7 +179,7 @@ void ReInitSlaveI2C0(UInt8 address, I2C_SPEED speed)
     
 }
 
-void InitSlaveI2C0(UInt8 address, I2C_SPEED speed)
+void initSlaveI2C0(UInt8 address, I2C_SPEED speed)
 {
 	
         SETBIT(LPC_IOCON->PIO0_4,0);
@@ -188,17 +188,17 @@ void InitSlaveI2C0(UInt8 address, I2C_SPEED speed)
         SETBIT(LPC_SYSCON->SYSAHBCLKCTRL,5);
         SETBIT(LPC_SYSCON->PRESETCTRL,1);
                 
-	ReInitSlaveI2C0(address,speed);
+	reInitSlaveI2C0(address,speed);
         
         //i2cWriteIndex = 0;
         if(i2cStream == 0)
         {
-                i2cStream = NewInputOutputStream(I2C_STREAM_BUFFER_SIZE);
+                i2cStream = newInputOutputStream(I2C_STREAM_BUFFER_SIZE);
         }
 }
 
 
-void HaltSlaveI2C0(void)
+void haltSlaveI2C0(void)
 {
     LPC_I2C->CONCLR = 0x40;
     
@@ -206,15 +206,15 @@ void HaltSlaveI2C0(void)
 }
 
 
-UInt32 GetBufferFromMasterI2C0(UInt8 *buffer, UInt32 len)
+UInt32 getBufferFromMasterI2C0(UInt8 *buffer, UInt32 len)
 {
-    WaitDataFromStream(i2cStream);
+    waitDataFromStream(i2cStream);
 
-    return GetAllBufferFromStream(i2cStream,buffer, len);
+    return getAllBufferFromStream(i2cStream,buffer, len);
 }
 
 
-void SetBufferToMasterI2C0(UInt8 *buffer, UInt8 size)
+void setBufferToMasterI2C0(UInt8 *buffer, UInt8 size)
 {
 
     UInt8 i;

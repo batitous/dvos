@@ -39,7 +39,7 @@ typedef enum _power_driver_
 }POWERDRIVER;
 
 
-extern void SetPowerSupply(POWERDRIVER driver, Bool enable);
+extern void setPowerSupply(POWERDRIVER driver, Bool enable);
 
 
 #ifdef __cplusplus

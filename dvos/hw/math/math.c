@@ -22,7 +22,7 @@
 #define MATH_PI         804
 
 
-Int16 GetDegreeFromRadian(IntQ15 radian)
+Int16 getDegreeFromRadian(IntQ15 radian)
 {
     Int32 tmp = radian * 180 * 32768;
     
@@ -31,7 +31,7 @@ Int16 GetDegreeFromRadian(IntQ15 radian)
     return tmp;
 }
 
-IntQ15 GetRadianFromDegree(Int16 degree)
+IntQ15 getRadianFromDegree(Int16 degree)
 {
     Int32 tmp = degree * 32768 * MATH_PI;
     

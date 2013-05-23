@@ -19,7 +19,7 @@
 #include "../include/libs-hardware.h"
 
 
-UInt32 GetSqrt(UInt32 x)
+UInt32 getSqrt(UInt32 x)
 {
    UInt32 m, y, b;
 

@@ -168,7 +168,7 @@ __cs3_reset_cortex_m:
  /*   LDR     R0,=InitLowLevelCpu
     BLX     R0
 */
-    BL      InitLowLevelCpu
+    BL      initLowLevelCpu
 
 /* call main() */
     LDR     R0,=main

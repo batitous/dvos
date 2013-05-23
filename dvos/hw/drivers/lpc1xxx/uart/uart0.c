@@ -33,7 +33,7 @@ void setUartIoCon(void)
     CLRBITS(LPC_IOCON->PIO1_7,7);
     LPC_IOCON->PIO1_7 |= 1;
     
-    PowerOnUART0();
+    powerOnUART0();
 }
 #endif
 
@@ -47,7 +47,7 @@ void setUartIoCon(void)
     CLRBITS(LPC_IOCON->PIO0_18,7);
     LPC_IOCON->PIO0_18 |= 1;
     
-    PowerOnUART0();
+    powerOnUART0();
 }
 #endif
 
@@ -111,15 +111,15 @@ void UART0_IRQHandler(void)
         //Receive Data Available
         if(status==0x02)
         {   
-            SetByteToStream((KIOStream *)uartStream,LPC_UART0->RBR);
-            IrqWakeUpTaskFromStream((KIOStream *)uartStream);
+            setByteToStream((KIOStream *)uartStream,LPC_UART0->RBR);
+            irqWakeUpTaskFromStream((KIOStream *)uartStream);
         }
     }
 }
 
 //--------------------- public functions:
 
-void PowerOnUART0(void)
+void powerOnUART0(void)
 {
      // enable uart clock
 #ifdef MCU_IS_LPC13XX
@@ -128,7 +128,7 @@ void PowerOnUART0(void)
 #endif
 }
 
-void PowerOffUART0(void)
+void powerOffUART0(void)
 {
 #ifdef MCU_IS_LPC13XX
     CLRBIT(LPC_SYSCON->SYSAHBCLKCTRL,12);
@@ -136,7 +136,7 @@ void PowerOffUART0(void)
 #endif
 }
 
-void InitUART0(void)
+void initUART0(void)
 {
     setUartIoCon();
     
@@ -153,10 +153,10 @@ void InitUART0(void)
     NVIC_SetPriority(UART0_IRQn, 0x04);
     NVIC_EnableIRQ(UART0_IRQn); // enable NVIC UART0 Interrupt
 
-    uartStream = NewInputOutputStream(UART_BUFFER_SIZE);
+    uartStream = newInputOutputStream(UART_BUFFER_SIZE);
 }
 
-void SendByteToUART0(UInt8 byte)
+void sendByteToUART0(UInt8 byte)
 {
 	while( (LPC_UART0->LSR & BIT(5) ) ==0 );
 
@@ -166,30 +166,30 @@ void SendByteToUART0(UInt8 byte)
 	LPC_UART0->THR=byte;
 }
 
-void SendBufferToUART0(UInt8 * Buffer,UInt32 Count)
+void sendBufferToUART0(UInt8 * Buffer,UInt32 Count)
 {
     UInt32 i;
 
     for(i=0;i<Count;i++)
     {
-        SendByteToUART0(Buffer[i]);
+        sendByteToUART0(Buffer[i]);
     }
 }
 
 
-Bool GetBufferFromUART0(UInt8 * buffer, UInt32 len)
+Bool getBufferFromUART0(UInt8 * buffer, UInt32 len)
 {
-    return GetBufferFromStream((KIOStream *)uartStream,buffer,len,30);
+    return getBufferFromStream((KIOStream *)uartStream,buffer,len,30);
 }
 
-Bool GetByteFromUART0(UInt8 *Data)
+Bool getByteFromUART0(UInt8 *Data)
 {
-    return GetByteFromStream((KIOStream *)uartStream, Data);
+    return getByteFromStream((KIOStream *)uartStream, Data);
 }
 
-void WaitDataFromUART0(void)
+void waitDataFromUART0(void)
 {
-    WaitDataFromStream((KIOStream *)uartStream);
+    waitDataFromStream((KIOStream *)uartStream);
 }
 
 /*

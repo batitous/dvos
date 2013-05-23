@@ -54,16 +54,16 @@ static Bool getRawMagneticFieldValue(MagneticRawValue * rawvalue)
         {
             // check if we have new value in x, y and z axis
             buffer[0] = 0x00;
-            SendBufferToI2CSoft(MAG3110_I2C_ADDR,buffer,1);
-            GetBufferFromI2CSoft(MAG3110_I2C_ADDR,buffer,1);
-            WaitMs(10);
+            sendBufferToI2CSoft(MAG3110_I2C_ADDR,buffer,1);
+            getBufferFromI2CSoft(MAG3110_I2C_ADDR,buffer,1);
+            waitMs(10);
 
         }while( (buffer[0]&0x08) == 0);
 
 
         buffer[0] = 0x01;
-        SendBufferToI2CSoft(MAG3110_I2C_ADDR,buffer,1);
-        GetBufferFromI2CSoft(MAG3110_I2C_ADDR,buffer,6);
+        sendBufferToI2CSoft(MAG3110_I2C_ADDR,buffer,1);
+        getBufferFromI2CSoft(MAG3110_I2C_ADDR,buffer,6);
 
         x = buffer[0]<<8;
         x |= buffer[1];
@@ -91,7 +91,7 @@ static Bool getRawMagneticFieldValue(MagneticRawValue * rawvalue)
 
 //-------------------------- public functions
 
-Bool InitMagnetometer(void)
+Bool initMagnetometer(void)
 {
     UInt8 buffer[4];
     
@@ -99,10 +99,10 @@ Bool InitMagnetometer(void)
     //standby mode
     buffer[0] = 0x10;
     buffer[1] = 0x00;
-    SendBufferToI2CSoft(MAG3110_I2C_ADDR,buffer,2);
+    sendBufferToI2CSoft(MAG3110_I2C_ADDR,buffer,2);
     
     
-    WaitMs(100);
+    waitMs(100);
     
     // auto-reset CTRL_REG2 = 0x80
     buffer[0] = 0x11;
@@ -111,22 +111,22 @@ Bool InitMagnetometer(void)
     //buffer[1] = 0x20; // RAW
 //    buffer[1] = 0xB0; // reset mag
 //    buffer[1] = 0x00;
-    SendBufferToI2CSoft(MAG3110_I2C_ADDR,buffer,2);
+    sendBufferToI2CSoft(MAG3110_I2C_ADDR,buffer,2);
     
     
     // active mode 80 Hz CTRL_REG1 = 0x01 :
     buffer[0] = 0x10;
     //buffer[1] = 0x01;
     buffer[1] = 0x19;
-    SendBufferToI2CSoft(MAG3110_I2C_ADDR,buffer,2);
+    sendBufferToI2CSoft(MAG3110_I2C_ADDR,buffer,2);
     
     
     // get id :
     buffer[0] = 0x07;
-    SendBufferToI2CSoft(MAG3110_I2C_ADDR,buffer,1);
-    GetBufferFromI2CSoft(MAG3110_I2C_ADDR,buffer,1);
+    sendBufferToI2CSoft(MAG3110_I2C_ADDR,buffer,1);
+    getBufferFromI2CSoft(MAG3110_I2C_ADDR,buffer,1);
     
-    WaitMs(100);
+    waitMs(100);
     
     if( 0xC4 != buffer[0])
     {
@@ -150,18 +150,18 @@ UInt8 calibratestate = NO_CALIB;
 Bool init = True;
 
 
-void StartMagnetometerCalibration(void)
+void startMagnetometerCalibration(void)
 {
     calibratestate = INIT_CALIB;
 }
 
-void StopMagnetometerCalibration(void)
+void stopMagnetometerCalibration(void)
 {
     calibratestate = END_CALIB;
 }
 
 
-Bool GetMagneticValue(MagneticRawValue * rawvalue, MagneticRawValue * value)
+Bool getMagneticValue(MagneticRawValue * rawvalue, MagneticRawValue * value)
 {    
     Int32 hix = 0, hiy = 0, hiz = 0;
     
@@ -169,10 +169,10 @@ Bool GetMagneticValue(MagneticRawValue * rawvalue, MagneticRawValue * value)
     {
         //DebugPrintf("Init mag\r\n");
 
-        InitMagnetometer();
+        initMagnetometer();
         
         //load eeprom min-max values
-        ReadBufferFromEeprom(0, (UInt8*)magnetics, sizeof(MagneticMinMax)*AXIS_NUMBER);
+        readBufferFromEeprom(0, (UInt8*)magnetics, sizeof(MagneticMinMax)*AXIS_NUMBER);
         
         init = False;
     }
@@ -248,7 +248,7 @@ Bool GetMagneticValue(MagneticRawValue * rawvalue, MagneticRawValue * value)
         
         case END_CALIB: //calibration end -> saving data
         {
-            WriteBufferToEeprom(0, (UInt8*)magnetics, sizeof(MagneticMinMax)*AXIS_NUMBER);
+            writeBufferToEeprom(0, (UInt8*)magnetics, sizeof(MagneticMinMax)*AXIS_NUMBER);
             
             calibratestate = NO_CALIB; // go to no calibration
             break;

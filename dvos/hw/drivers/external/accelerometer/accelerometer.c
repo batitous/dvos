@@ -114,14 +114,14 @@ static Int16 getGValue(UInt8 byte)
 //-------------------------- public functions
 
 
-void InitAccelerometer(AccelerometerConfig config, UInt8 tapCount, UInt8 tapSensibility)
+void initAccelerometer(AccelerometerConfig config, UInt8 tapCount, UInt8 tapSensibility)
 {
     UInt8 buffer[2];
     
     // standby mode
     buffer[0] = 0x07;
     buffer[1] = 0x00;
-    SendBufferToI2CSoft(MMA7660FC_I2C_ADDR,buffer,2);
+    sendBufferToI2CSoft(MMA7660FC_I2C_ADDR,buffer,2);
     
     // set timing for update and tilt
     buffer[0] = 0x08;
@@ -145,36 +145,36 @@ void InitAccelerometer(AccelerometerConfig config, UInt8 tapCount, UInt8 tapSens
         //for tap:
         buffer[1] = 0x00;
     }
-    SendBufferToI2CSoft(MMA7660FC_I2C_ADDR,buffer,2);
+    sendBufferToI2CSoft(MMA7660FC_I2C_ADDR,buffer,2);
     
     if( config == ACCELEROMETER_CONFIG_DETECT_TAP)
     {
         buffer[0] = 0x09;
         buffer[1] = tapCount; //11 by default?
-        SendBufferToI2CSoft(MMA7660FC_I2C_ADDR,buffer,2);
+        sendBufferToI2CSoft(MMA7660FC_I2C_ADDR,buffer,2);
         
         buffer[0] = 0x0A;
         //buffer[1] = 0x5F;
         buffer[1] = tapSensibility; // 11 by default ?
-        SendBufferToI2CSoft(MMA7660FC_I2C_ADDR,buffer,2);
+        sendBufferToI2CSoft(MMA7660FC_I2C_ADDR,buffer,2);
     }
     
     // active mode
     buffer[0] = 0x07;
     buffer[1] = 0x01;
-    SendBufferToI2CSoft(MMA7660FC_I2C_ADDR,buffer,2);
+    sendBufferToI2CSoft(MMA7660FC_I2C_ADDR,buffer,2);
     
 }
 
-Bool GetAccelerometer(AccelerationInfo * info, AccelerationRawValue * value, Bool gBound)
+Bool getAccelerometer(AccelerationInfo * info, AccelerationRawValue * value, Bool gBound)
 {
     UInt8 backfront, pola;
     UInt8 buffer[4];
     
     // request accelerometer value
     buffer[0] = 0x00;
-    SendBufferToI2CSoft(MMA7660FC_I2C_ADDR,buffer,1);
-    GetBufferFromI2CSoft(MMA7660FC_I2C_ADDR,buffer,4);
+    sendBufferToI2CSoft(MMA7660FC_I2C_ADDR,buffer,1);
+    getBufferFromI2CSoft(MMA7660FC_I2C_ADDR,buffer,4);
         
     if( (buffer[0] & 0x40)!=0 ||
         (buffer[1] & 0x40)!=0 ||

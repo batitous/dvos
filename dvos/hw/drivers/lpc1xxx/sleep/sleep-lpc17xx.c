@@ -19,7 +19,7 @@
 #include "../include/libs-hardware.h"
 
 
-void SetMcuToSleep(SLEEPMODE mode)
+void setMcuToSleep(SLEEPMODE mode)
 {
     // power down not implemented
     

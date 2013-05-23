@@ -81,7 +81,7 @@ typedef enum _accel_detect_
  * @param tapCount              Number of tap to detect.
  * @param tapSensibility        Sensibility of tap detection.
  */
-extern void InitAccelerometer(AccelerometerConfig config, UInt8 tapCount, UInt8 tapSensibility);
+extern void initAccelerometer(AccelerometerConfig config, UInt8 tapCount, UInt8 tapSensibility);
 
 /** Get accelerometer values.
  * 
@@ -90,7 +90,7 @@ extern void InitAccelerometer(AccelerometerConfig config, UInt8 tapCount, UInt8 
  * @param gBound        True to set g value between -1g and +1g
  * @return False if no new values available.
  */
-extern Bool GetAccelerometer(AccelerationInfo * info, AccelerationRawValue * value, Bool gBound);
+extern Bool getAccelerometer(AccelerationInfo * info, AccelerationRawValue * value, Bool gBound);
 
     
 #ifdef __cplusplus
