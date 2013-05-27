@@ -45,7 +45,7 @@ void initMemoryPool(UInt8 * address, UInt32 size)
     TRACE_MEMPOOL(("mempool init at 0x%x size %d\r\n", address, size)); 
 }
 
-void * getMemoryPool(UInt32 size)
+void * allocMemoryPool(UInt32 size)
 {
     UInt8 * currentPool = nextPoolFreeAddress;
     

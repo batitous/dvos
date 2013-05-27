@@ -28,7 +28,7 @@
 
 extern void initMemoryPool(UInt8 * address, UInt32 size);
 
-extern void * getMemoryPool(UInt32 size);
+extern void * allocMemoryPool(UInt32 size);
 
 
 #endif

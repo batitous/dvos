@@ -26,7 +26,7 @@ typedef struct _kernel_io_stream_
     KThread *       receiver;   /**< receiver thread */
     UInt8 *         buffer;     /**< input/output buffer */
     UInt16          read;       /**< read index */
-    UInt16 write;      /**< write index */
+    UInt16          write;      /**< write index */
     UInt16          size;       /**< buffer size */
 } KIOStream;
 
