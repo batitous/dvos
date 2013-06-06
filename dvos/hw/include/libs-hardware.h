@@ -49,7 +49,7 @@ extern "C" {
 #include "drivers/rgbled.h"
 #include "drivers/byc-board.h"
 #include "drivers/eeprom.h"
-
+#include "device.h"
     
 
 #ifdef __cplusplus

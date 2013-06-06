@@ -1,10 +1,11 @@
 # default hw source files:
-C_HW=init.c core_cm3.c time.c 
+C_HW=init.c core_cm3.c time.c device.c
 
 
 # Source path of HW:
 SRC_HW=$(HW)core/cortex-m3 \
-		$(HW)drivers/lpc1xxx/analog \
+        $(HW)drivers \
+	$(HW)drivers/lpc1xxx/analog \
         $(HW)drivers/lpc1xxx/uart \
         $(HW)drivers/lpc1xxx/i2c \
         $(HW)drivers/lpc1xxx/spi \
