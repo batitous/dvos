@@ -80,6 +80,12 @@ LPC_GPIO_TypeDef * getGpioPort(GPIO_PIN pin)
 #endif
         
 #ifdef MCU_IS_LPC17XX
+        case GPIO_PORT2:
+            return LPC_GPIO2;
+            break;
+        case GPIO_PORT3:
+            return LPC_GPIO3;
+        break;
         case GPIO_PORT4:
             return LPC_GPIO4;
             break;

@@ -59,7 +59,7 @@ void initSPI(void)
     // sck = PCLK_SPI / value
     // 8 is low speed: ~12,5Mhz
     // 4 = 25 MHz
-    LPC_SPIF->SPCCR = 4;
+    LPC_SPIF->SPCCR = 7;
 
 
     SETBIT(LPC_SPIF->SPCR, MSTR);   // 0=slave, 1=master 
