@@ -74,7 +74,7 @@ include $(DVOS_PATH)kernel/Makefile.kernel
 DVOS_FILES= $(C_KERNEL) $(C_HW)
 
 # Include path:
-INCLUDE=$(INC_HW) $(INC_KERN)
+INCLUDE=$(INC_HW) $(INC_KERN) $(INC_PROJECT)
 
 
 

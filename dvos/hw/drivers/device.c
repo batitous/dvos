@@ -25,7 +25,7 @@ typedef struct _k_device_entry_
 } KDeviceEntry;
 
 
-const static KDeviceEntry devices[] =
+static const KDeviceEntry devices[] =
 {
     
     { 0, 0 }
@@ -50,26 +50,26 @@ KDevice * open(UInt32 name, UInt32 option)
 
 UInt32 write(KDevice * fd, UInt8 * buffer, UInt32 size)
 {
-    fd->dev->write(fd,buffer,size);
+    return fd->dev->write(fd,buffer,size);
 }
 
 UInt32 read(KDevice * fd, UInt8 * buffer, UInt32 size)
 {
-    fd->dev->read(fd,buffer,size);
+    return fd->dev->read(fd,buffer,size);
 }
 
 UInt32 control(KDevice * fd, UInt32 option, UInt32 value)
 {
-    fd->dev->control(fd,option,value);
+    return fd->dev->control(fd,option,value);
 }
 
 UInt32 status(KDevice * fd, UInt32 option, UInt32 * result)
 {
-    fd->dev->status(fd,option,result);
+    return fd->dev->status(fd,option,result);
 }
 
 UInt32 close(KDevice * fd)
 {
-    fd->dev->close(fd);
+    return fd->dev->close(fd);
 }
 
