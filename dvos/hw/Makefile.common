@@ -70,6 +70,10 @@ ifeq ($(flash),yes)
     C_HW+= iap.c flash.c rom-iap.c
 endif
 
+ifeq ($(flash-sst25),yes)
+    C_HW+= flash-sst25.c
+endif
+
 ifeq ($(pwm),yes)
     ifeq ($(mcu),lpc17xx)
         C_HW+= pwm-lpc17xx.c

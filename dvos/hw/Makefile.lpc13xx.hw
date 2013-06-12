@@ -19,6 +19,7 @@ SRC_HW=$(HW)core/cortex-m3 \
         $(HW)drivers/external/accelerometer \
         $(HW)drivers/external/magnetometer \
         $(HW)drivers/external/mem-protocol \
+        $(HW)drivers/external/flash \
         $(HW)drivers/lpc1xxx/sleep \
         $(HW)drivers \
         $(HW)mcu/lpc13xx \

@@ -19,6 +19,7 @@ SRC_HW=$(HW)core/cortex-m3 \
         $(HW)drivers/external/prs-sensor \
         $(HW)drivers/external/rgbled \
         $(HW)drivers/external/byc-board \
+        $(HW)drivers/external/flash \
         $(HW)drivers/lpc1xxx/sleep \
         $(HW)drivers/lpc1xxx/power \
         $(HW)drivers/lpc1xxx/usb-serial \

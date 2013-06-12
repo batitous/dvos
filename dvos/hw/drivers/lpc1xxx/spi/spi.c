@@ -59,6 +59,7 @@ void initSPI(void)
     // sck = PCLK_SPI / value
     // 8 is low speed: ~12,5Mhz
     // 4 = 25 MHz
+    // 7 for wifi
     LPC_SPIF->SPCCR = 7;
 
 

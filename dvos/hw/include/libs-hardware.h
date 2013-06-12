@@ -32,6 +32,7 @@ extern "C" {
 #include "drivers/uart.h"
 #include "drivers/rom-iap.h"
 #include "drivers/flash.h"
+#include "drivers/flash-sst25.h"
 #include "drivers/i2c.h"
 #include "drivers/i2c-soft.h"
 #include "drivers/analog.h"
