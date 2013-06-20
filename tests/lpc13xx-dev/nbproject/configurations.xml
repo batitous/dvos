@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <df name="dvos" root="../../dvos">
+    <df name="dvos" root="/Volumes/POB/project/foutoir-projet/dvos/dvos">
       <df name="hw">
         <df name="core">
           <df name="cortex-m3">
@@ -21,6 +21,9 @@
             </df>
             <df name="eeprom">
               <in>eeprom.c</in>
+            </df>
+            <df name="flash">
+              <in>flash-sst25.c</in>
             </df>
             <df name="magnetometer">
               <in>magnetometer.c</in>
@@ -88,6 +91,7 @@
               <in>uart0.c</in>
             </df>
           </df>
+          <in>device.c</in>
         </df>
         <df name="include">
           <df name="core">
@@ -100,6 +104,7 @@
             <in>byc-board.h</in>
             <in>compass.h</in>
             <in>eeprom.h</in>
+            <in>flash-sst25.h</in>
             <in>flash.h</in>
             <in>gpio-pins.h</in>
             <in>gpio.h</in>
@@ -121,6 +126,7 @@
             <in>lpc13xx.h</in>
             <in>lpc17xx.h</in>
           </df>
+          <in>device.h</in>
           <in>libc.h</in>
           <in>libs-default.h</in>
           <in>libs-hardware.h</in>
@@ -144,10 +150,12 @@
         <df name="mcu">
           <df name="lpc13xx">
             <in>init.c</in>
+            <in>lpc13xx.ld</in>
             <in>startup.S</in>
           </df>
           <df name="lpc17xx">
             <in>init.c</in>
+            <in>lpc17xx.ld</in>
             <in>startup.S</in>
           </df>
         </df>
@@ -157,6 +165,9 @@
           <in>time.c</in>
           <in>utils.c</in>
         </df>
+        <in>Makefile.common</in>
+        <in>Makefile.lpc13xx.hw</in>
+        <in>Makefile.lpc17xx.hw</in>
       </df>
       <df name="kernel">
         <df name="include">
@@ -191,7 +202,33 @@
           <in>main.c</in>
           <in>slist.c</in>
         </df>
+        <in>Makefile.kernel</in>
       </df>
+      <in>Makefile.dvos</in>
+    </df>
+    <df name="lpc13xx-dev"
+        root="/Volumes/POB/project/foutoir-projet/dvos/tests/lpc13xx-dev">
+      <df name="build">
+      </df>
+      <df name="include">
+        <in>Sensors.h</in>
+      </df>
+      <df name="source">
+        <in>usermain.c</in>
+      </df>
+      <df name="usb">
+        <df name="Lib">
+          <in>UsbRom.c</in>
+          <in>UsbRom.h</in>
+        </df>
+        <in>Descriptors.c</in>
+        <in>Descriptors.h</in>
+        <in>VirtualSerial.c</in>
+        <in>VirtualSerial.h</in>
+      </df>
+      <in>Makefile</in>
+      <in>Makefile.options</in>
+      <in>Makefile.toolchainconfig</in>
     </df>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -206,8 +243,8 @@
   </logicalFolder>
   <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
   <sourceRootList>
-    <Elem>source</Elem>
-    <Elem>../../dvos</Elem>
+    <Elem>/Volumes/POB/project/foutoir-projet/dvos/dvos</Elem>
+    <Elem>/Volumes/POB/project/foutoir-projet/dvos/tests/lpc13xx-dev</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

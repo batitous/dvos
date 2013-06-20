@@ -9,3 +9,6 @@ DISASM=$(TOOLS_PATH)arm-eabi-objdump
 
 OPENOCD=../../tools/openocd-mac/
 FTDI=../../tools/lpc21isp
+
+CRC=../../tools/crc
+USB=../../tools/writebintousb.sh

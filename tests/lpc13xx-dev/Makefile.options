@@ -5,8 +5,16 @@
 # Executable name:
 NAME=firmware
 
+COMPILER_DEFINES = -DUSB_DEVICE_ROM_DRIVER
+
 # project source files:
-C_PROJECT=usermain.c
+C_PROJECT=usermain.c UsbRom.c
+
+# include repertory : -I<repertory path>
+INC_PROJECT=
+
+# path to project source code
+C_PATH_PROJECT=./source ./usb ./usb/Lib
 
 
 #### select device you want to use ####
@@ -23,7 +31,7 @@ kernelmemory = 2560
 debug = yes
 
 # prs sensor use the i2c slave :
-prs-sensor = yes
+prs-sensor = no
 i2cslave = yes
 
 gpio = yes
@@ -39,18 +47,18 @@ pwm = yes
 sleep = yes
 timer = yes
 i2cmastersoft = yes
-magnetometer = yes
-accelerometer = yes
+magnetometer = no
+accelerometer = no
 mathcos-sin = yes
 mathtan = yes
 
-mem-protocol = yes
-eeprom = yes
+mem-protocol = no
+eeprom = no
 
 #### compiler defines ####
 
 # Activate debug trace for kernel
-COMPILER_DEFINES = -DKERNEL_USE_DEBUG
+COMPILER_DEFINES += -DKERNEL_USE_DEBUG
 
 # size of kernel stack : don't change !
 kernelstacksize = 0x00000200

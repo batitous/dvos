@@ -26,7 +26,7 @@
 #       define GPIO_PORT       LPC_GPIO2
 #       define SCL_PIN         0
 #       define SDA_PIN         2
-#       define initI2cIO()      /* remove pull-up:*/ \
+#       define initI2CIO()      /* remove pull-up:*/ \
                                 CLRBITS(LPC_IOCON->PIO2_2,0x18);\
                                 CLRBITS(LPC_IOCON->PIO2_0,0x18);
 #endif

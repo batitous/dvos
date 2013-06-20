@@ -15,10 +15,11 @@ include $(DVOS_PATH)Makefile.dvos
 BUILD_PATH=./build
 
 SOURCE_FILES= $(DVOS_FILES) $(C_PROJECT)
-SRC_PATH=$(SRC_KERN) $(SRC_HW) ./source
+SRC_PATH=$(SRC_KERN) $(SRC_HW) $(C_PATH_PROJECT)
 
 EXE=$(BUILD_PATH)/$(NAME).hex
 EXE_MAIN=$(BUILD_PATH)/$(NAME).elf
+EXE_BIN=$(BUILD_PATH)/$(NAME).bin
 
 # external library
 LIB_USE=-lc $(BUILD_PATH)/startup.o
@@ -39,6 +40,8 @@ build: $(OBJ_FILES)
 	@$(ASM_GCC) $(ASM_HW) -o $(BUILD_PATH)/startup.o
 	@$(LINKER) $(OBJ_FILES) $(LIB_USE)
 	@$(HEX) $(HEX_OPTIONS)
+	@$(HEX) --strip-unneeded -O binary $(EXE_MAIN) $(EXE_BIN)
+	@$(CRC) $(EXE_BIN)
 	@$(SIZE) --target=ihex $(EXE)
 	@$(SIZE) -A $(EXE_MAIN)
 
@@ -63,3 +66,6 @@ cleanbuild:
 
 flash:
 	$(FTDI) $(EXE) -wipe /dev/cu.usbserial-004013FD  115200 12000
+
+usb:
+	sudo $(USB) $(EXE_BIN)

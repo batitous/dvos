@@ -10,8 +10,8 @@
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
-                <sourceRootElem>source</sourceRootElem>
-                <sourceRootElem>../../dvos</sourceRootElem>
+                <sourceRootElem>/Volumes/POB/project/foutoir-projet/dvos/dvos</sourceRootElem>
+                <sourceRootElem>/Volumes/POB/project/foutoir-projet/dvos/tests/lpc13xx-dev</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

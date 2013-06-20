@@ -54,7 +54,7 @@ void TIMER_32_1_IRQn_Handler(void)
 
 //----------------------------- public functions
 
-void initTimer32(TIMER timerSelected, UInt32 waitInUs)
+Bool initTimer32(TIMER timerSelected, UInt32 waitInUs)
 {
     LPC_TMR_TypeDef * timer;
     UInt32 waitInTick;
@@ -113,7 +113,8 @@ void initTimer32(TIMER timerSelected, UInt32 waitInUs)
     
     // enable timer
     //SETBIT(timer->TCR,0);
-    
+ 
+    return True;
 }
 
 void setTimer32(TIMER timerSelected, UInt32 waitInUs)
