@@ -24,6 +24,8 @@
                                        DWT_CTRL = DWT_CTRL | 1 ; } while(0)
 
 int offset, cycles;
+ 
+ http://www.microbuilder.eu/Projects/LPC1343ReferenceDesign/DWTBenchmarking.aspx
 
 CPU_RESET_CYCLECOUNTER;
 __asm volatile("nop");

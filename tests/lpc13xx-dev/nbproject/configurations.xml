@@ -150,12 +150,10 @@
         <df name="mcu">
           <df name="lpc13xx">
             <in>init.c</in>
-            <in>lpc13xx.ld</in>
             <in>startup.S</in>
           </df>
           <df name="lpc17xx">
             <in>init.c</in>
-            <in>lpc17xx.ld</in>
             <in>startup.S</in>
           </df>
         </df>
@@ -165,9 +163,6 @@
           <in>time.c</in>
           <in>utils.c</in>
         </df>
-        <in>Makefile.common</in>
-        <in>Makefile.lpc13xx.hw</in>
-        <in>Makefile.lpc17xx.hw</in>
       </df>
       <df name="kernel">
         <df name="include">
@@ -202,9 +197,7 @@
           <in>main.c</in>
           <in>slist.c</in>
         </df>
-        <in>Makefile.kernel</in>
       </df>
-      <in>Makefile.dvos</in>
     </df>
     <df name="lpc13xx-dev"
         root="/Volumes/POB/project/foutoir-projet/dvos/tests/lpc13xx-dev">
@@ -226,9 +219,6 @@
         <in>VirtualSerial.c</in>
         <in>VirtualSerial.h</in>
       </df>
-      <in>Makefile</in>
-      <in>Makefile.options</in>
-      <in>Makefile.toolchainconfig</in>
     </df>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

@@ -66,6 +66,11 @@ SECTIONS
     KEEP(*(.cs3.interrupt_vector))
     /* Make sure we pulled in an interrupt vector.  */
     ASSERT (. != __cs3_interrupt_vector_cortex_m, "No interrupt vector");
+
+    . = 0x200;
+   *(.dvos-api)
+
+
     *(.rom)
     *(.rom.b)
 
