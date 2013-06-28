@@ -81,6 +81,9 @@ ifeq ($(pwm),yes)
     ifeq ($(mcu),lpc13xx)
         C_HW+= pwm-lpc13xx.c
     endif
+    ifeq ($(mcu),lpc1315)
+        C_HW+= pwm-lpc13xx.c
+    endif
 endif
 
 ifeq ($(sleep),yes)

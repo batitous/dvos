@@ -60,22 +60,28 @@ void setPwmPin(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected)
             if( (pwmSelected&PWM0)==PWM0)
             {
                 // IOCON_R_PIO1_1 CT32B1_MAT0 warning : AD2 FUNC=0x3
+#ifdef MCU_IS_LPC1311
                 SETBIT(LPC_IOCON->R_PIO1_1,0);
                 SETBIT(LPC_IOCON->R_PIO1_1,1);
+#endif
             }
 
             if( (pwmSelected&PWM1)==PWM1)
             {
                 // IOCON_R_PIO1_2 CT32B1_MAT1 warning : AD3 FUNC=0x3
+#ifdef MCU_IS_LPC1311
                 SETBIT(LPC_IOCON->R_PIO1_2,0);
                 SETBIT(LPC_IOCON->R_PIO1_2,1);
+#endif
             }
 
             if( (pwmSelected&PWM2)==PWM2)
             {
                 // IOCON_SWDIO_PIO1_3 CT32B1_MAT2 warning : AD4 FUNC=0x3
+#ifdef MCU_IS_LPC1311
                 SETBIT(LPC_IOCON->SWDIO_PIO1_3,0);
                 SETBIT(LPC_IOCON->SWDIO_PIO1_3,1);
+#endif
             }
         }
     }
@@ -108,9 +114,8 @@ void setPwmPin(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected)
         {
             if( (pwmSelected&PWM0)==PWM0)
             {
-                // IOCON_R_PIO1_1 CT32B1_MAT0 warning : AD2 FUNC=0x3
-                //SETBIT(LPC_IOCON->R_PIO1_1,0);
-                //SETBIT(LPC_IOCON->R_PIO1_1,1);
+                // IOCON PIO0_21 CT16B1_MAT0
+                SETBIT(LPC_IOCON->PIO0_21,1);
             }
 
             if( (pwmSelected&PWM1)==PWM1)

@@ -640,7 +640,7 @@ typedef struct
 #define LPC_CT32B0_BASE       (LPC_APB0_BASE + 0x14000)
 #define LPC_CT32B1_BASE       (LPC_APB0_BASE + 0x18000)
 #define LPC_ADC_BASE          (LPC_APB0_BASE + 0x1C000)
-#define LPC_USB_BASE          (LPC_APB0_BASE + 0x20000)
+#define LPC_USB_BASE          (LPC_APB0_BASE + 0x80000) // L.O.L LPC1347
 #define LPC_PMU_BASE          (LPC_APB0_BASE + 0x38000)
 // LPC_SSP_BASE original name, LPC_SSP0_BASE new preferred name
 #define LPC_SSP_BASE          (LPC_APB0_BASE + 0x40000)
