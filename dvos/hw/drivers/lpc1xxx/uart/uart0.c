@@ -124,7 +124,7 @@ void powerOnUART0(void)
      // enable uart clock
 #ifdef MCU_IS_LPC13XX
     SETBIT(LPC_SYSCON->SYSAHBCLKCTRL,12);    
-    LPC_SYSCON->UARTCLKDIV = 1;
+    LPC_SYSCON->USARTCLKDIV = 1;
 #endif
 }
 
@@ -132,7 +132,7 @@ void powerOffUART0(void)
 {
 #ifdef MCU_IS_LPC13XX
     CLRBIT(LPC_SYSCON->SYSAHBCLKCTRL,12);
-    LPC_SYSCON->UARTCLKDIV = 0;
+    LPC_SYSCON->USARTCLKDIV = 0;
 #endif
 }
 

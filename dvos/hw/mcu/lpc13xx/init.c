@@ -90,12 +90,14 @@ void initLowLevelCpu(void)
     LPC_SYSCON->MAINCLKSEL    = 3;
     
     // Update main clock selection
+#ifdef MCU_IS_LPC13xx
     LPC_SYSCON->MAINCLKUEN    = 1;
     LPC_SYSCON->MAINCLKUEN    = 0;
     LPC_SYSCON->MAINCLKUEN    = 1;
-    
+
     // Wait main clock
     while ( !(LPC_SYSCON->MAINCLKUEN & BIT(0)) );
+#endif
     
     //====== USB Clock ====//
     // USB avalaible only on LPC1343

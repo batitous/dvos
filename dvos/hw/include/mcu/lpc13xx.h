@@ -165,85 +165,105 @@ typedef enum IRQn
 #endif
 
 /*------------- System Control (SYSCON) --------------------------------------*/
-typedef struct
-{
-  __IO uint32_t SYSMEMREMAP;     /* Sys mem. Remap, Offset 0x0   */
-  __IO uint32_t PRESETCTRL;
-  __IO uint32_t SYSPLLCTRL;      /* Sys PLL control              */
-  __IO uint32_t SYSPLLSTAT;
-  __IO uint32_t USBPLLCTRL;      /* USB PLL control, offset 0x10 */
-  __IO uint32_t USBPLLSTAT;
-       uint32_t RESERVED0[2];
+typedef struct {			/*!< SYSCTL Structure */
+	__IO uint32_t  SYSMEMREMAP;		/*!< System Memory remap register */
+	__IO uint32_t  PRESETCTRL;		/*!< Peripheral reset Control register */
+	__IO uint32_t  SYSPLLCTRL;		/*!< System PLL control register */
+	__I  uint32_t  SYSPLLSTAT;		/*!< System PLL status register */
+	__IO uint32_t  USBPLLCTRL;		/*!< USB PLL control register, LPC134x only */
+	__I  uint32_t  USBPLLSTAT;		/*!< USB PLL status register, LPC134x only */
+	__I  uint32_t  RESERVED1[2];
+	__IO uint32_t  SYSOSCCTRL;		/*!< System Oscillator control register */
+	__IO uint32_t  WDTOSCCTRL;		/*!< Watchdog Oscillator control register */
+#if defined(MCU_IS_LPC1315)
+	__I  uint32_t  RESERVED2[2];
+#else
+	__IO uint32_t  IRCCTRL;			/*!< IRC control register */
+	__I  uint32_t  RESERVED2[1];
+#endif
 
-  __IO uint32_t SYSOSCCTRL;      /* Offset 0x20 */
-  __IO uint32_t WDTOSCCTRL;
-  __IO uint32_t IRCCTRL;
-       uint32_t RESERVED1[1];
-  __IO uint32_t SYSRESSTAT;      /* Offset 0x30 */
-       uint32_t RESERVED2[3];
-  __IO uint32_t SYSPLLCLKSEL;    /* Offset 0x40 */	
-  __IO uint32_t SYSPLLCLKUEN;
-  __IO uint32_t USBPLLCLKSEL;
-  __IO uint32_t USBPLLCLKUEN;
-       uint32_t RESERVED3[8];
-
-  __IO uint32_t MAINCLKSEL;      /* Offset 0x70 */
-  __IO uint32_t MAINCLKUEN;
-  __IO uint32_t SYSAHBCLKDIV;
-       uint32_t RESERVED4[1];
-
-  __IO uint32_t SYSAHBCLKCTRL;   /* Offset 0x80 */
-       uint32_t RESERVED5[4];
-  union {
-       // SSP0CLKDIV preferred name rather than original SSPCLKDIV
-       __IO uint32_t SSPCLKDIV;
-       __IO uint32_t SSP0CLKDIV;
-  };
-  __IO uint32_t UARTCLKDIV;
-  __IO uint32_t SSP1CLKDIV;             /*!< Offset: 0x09C SSP1 clock divider (R/W) */
-       uint32_t RESERVED6[3];
-  __IO uint32_t TRACECLKDIV;
-
-  __IO uint32_t SYSTICKCLKDIV;   /* Offset 0xB0 */           
-       uint32_t RESERVED7[3];
-
-  __IO uint32_t USBCLKSEL;       /* Offset 0xC0 */ 
-  __IO uint32_t USBCLKUEN;
-  __IO uint32_t USBCLKDIV;
-       uint32_t RESERVED8[1];
-  __IO uint32_t WDTCLKSEL;       /* Offset 0xD0 */
-  __IO uint32_t WDTCLKUEN;
-  __IO uint32_t WDTCLKDIV;
-       uint32_t RESERVED9[1];              
-  __IO uint32_t CLKOUTCLKSEL;    /* Offset 0xE0 */
-  __IO uint32_t CLKOUTUEN;
-  __IO uint32_t CLKOUTDIV;              
-       uint32_t RESERVED10[5];
-  
-  __IO uint32_t PIOPORCAP0;      /* Offset 0x100 */           
-  __IO uint32_t PIOPORCAP1;         
-       uint32_t RESERVED11[18];
-
-  __IO uint32_t BODCTRL;         /* Offset 0x150 */
-       uint32_t RESERVED12[1];
-  __IO uint32_t SYSTCKCAL;
-       uint32_t RESERVED13[41];          
-
-  __IO uint32_t STARTAPRP0;      /* Offset 0x200 */     
-  __IO uint32_t STARTERP0;             
-  __IO uint32_t STARTRSRP0CLR;
-  __IO uint32_t STARTSRP0;
-  __IO uint32_t STARTAPRP1;           
-  __IO uint32_t STARTERP1;             
-  __IO uint32_t STARTRSRP1CLR;
-  __IO uint32_t STARTSRP1;
-       uint32_t RESERVED14[4];
-
-  __IO uint32_t PDSLEEPCFG;      /* Offset 0x230 */
-  __IO uint32_t PDAWAKECFG;              
-  __IO uint32_t PDRUNCFG;
-       uint32_t RESERVED15[110];
-  __I  uint32_t DEVICE_ID;
+	__IO uint32_t  SYSRSTSTAT;		/*!< System Reset Status register           */
+	__I  uint32_t  RESERVED3[3];
+	__IO uint32_t  SYSPLLCLKSEL;	/*!< System PLL clock source select register */
+#if defined(MCU_IS_LPC1315)
+	__I  uint32_t  RESERVED4;
+#else
+	__IO uint32_t  SYSPLLCLKUEN;	/*!< System PLL clock source update enable register*/
+#endif
+	__IO uint32_t  USBPLLCLKSEL;	/*!< USB PLL clock source select register, LPC134x only */
+#if defined(MCU_IS_LPC1315)
+	__I  uint32_t  RESERVED4A[1];
+#else
+	__IO uint32_t  USBPLLCLKUEN;	/*!< USB PLL clock source update enable register, LPC1342/43 only */
+#endif
+	__I  uint32_t  RESERVED5[8];
+	__IO uint32_t  MAINCLKSEL;		/*!< Main clock source select register		*/
+#if defined(MCU_IS_LPC1315)
+	__IO uint32_t  RESERVED6;
+#else
+	__IO uint32_t  MAINCLKUEN;		/*!< Main clock source update enable register	*/
+#endif
+	__IO uint32_t  SYSAHBCLKDIV;	/*!< System Clock divider register */
+	__I  uint32_t  RESERVED6A;
+	__IO uint32_t  SYSAHBCLKCTRL;	/*!< System Clock control register */
+	__I  uint32_t  RESERVED7[4];
+	__IO uint32_t  SSP0CLKDIV;		/*!< SSP0 clock divider register   */
+	__IO uint32_t  USARTCLKDIV;		/*!< UART clock divider register   */
+	__IO uint32_t  SSP1CLKDIV;		/*!< SSP1 clock divider register */
+	__I  uint32_t  RESERVED8[3];
+	__IO uint32_t  TRACECLKDIV;		/*!< ARM trace clock divider register */
+	__IO uint32_t  SYSTICKCLKDIV;	/*!< SYSTICK clock divider register */
+	__I  uint32_t  RESERVED9[3];
+	__IO uint32_t  USBCLKSEL;		/*!< USB clock source select register, LPC134x only */
+#if defined(MCU_IS_LPC1315)
+	__I  uint32_t  RESERVED10;
+#else
+	__IO uint32_t  USBCLKUEN;		/*!< USB clock source update enable register, LPC1342/43 only */
+#endif
+	__IO uint32_t  USBCLKDIV;		/*!< USB clock source divider register, LPC134x only */
+#if defined(MCU_IS_LPC1315)
+	__I  uint32_t  RESERVED11[4];
+#else
+	__I  uint32_t  RESERVED11;
+	__IO uint32_t  WDTCLKSEL;		/*!< WDT clock source select register, some parts only */
+	__IO uint32_t  WDTCLKUEN;		/*!< WDT clock source update enable register, some parts only */
+	__IO uint32_t  WDTCLKDIV;		/*!< WDT clock divider register, some parts only */
+#endif
+	__I  uint32_t  RESERVED13;
+	__IO uint32_t  CLKOUTSEL;		/*!< Clock out source select register */
+#if defined(MCU_IS_LPC1315)
+	__I  uint32_t  RESERVED12;
+#else
+	__IO uint32_t  CLKOUTUEN;		/*!< Clock out source update enable register, not on LPC1311/13/42/43 only */
+#endif
+	__IO uint32_t  CLKOUTDIV;		/*!< Clock out divider register */
+	__I  uint32_t  RESERVED14[5];
+	__I  uint32_t  PIOPORCAP[2];	/*!< POR captured PIO status registers */
+	__I  uint32_t  RESERVED15[18];
+	__IO uint32_t  BODCTRL;			/*!< Brown Out Detect register */
+	__IO uint32_t  SYSTCKCAL;		/*!< System tick counter calibration register */
+#if defined(MCU_IS_LPC1315)
+	__I  uint32_t  RESERVED16[6];
+	__IO uint32_t  IRQLATENCY;		/*!< IRQ delay register */
+	__IO uint32_t  NMISRC;			/*!< NMI source control register,some parts only */
+	__IO uint32_t  PINTSEL[8];		/*!< GPIO pin interrupt select register 0-7 */
+	__IO uint32_t  USBCLKCTRL;		/*!< USB clock control register, LPC134x only */
+	__I  uint32_t  USBCLKST;		/*!< USB clock status register, LPC134x only */
+	__I  uint32_t  RESERVED17[25];
+	__IO uint32_t  STARTERP0;		/*!< Start logic 0 interrupt wake-up enable register */
+	__I  uint32_t  RESERVED18[3];
+	__IO uint32_t  STARTERP1;		/*!< Start logic 1 interrupt wake-up enable register */
+	__I  uint32_t  RESERVED19[6];
+#else
+	__I  uint32_t  RESERVED16[42];
+	LPC_SYSCTL_STARTST_T STARTLOGIC[2];
+	__I  uint32_t  RESERVED17[4];
+#endif
+	__IO uint32_t  PDSLEEPCFG;		/*!< Power down states in deep sleep mode register */
+	__IO uint32_t  PDWAKECFG;		/*!< Power down states in wake up from deep sleep register */
+	__IO uint32_t  PDRUNCFG;		/*!< Power configuration register*/
+	__I  uint32_t  RESERVED20[110];
+	__I  uint32_t  DEVICEID;		/*!< Device ID register */
 } LPC_SYSCON_TypeDef;
 
 
