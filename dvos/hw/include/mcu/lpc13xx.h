@@ -447,6 +447,28 @@ typedef struct {
   __O  uint32_t NOT[2];			/* 0x2300 */
 } LPC_GPIO_TypeDef;
 
+// GPIO pin interrupt register block structure
+typedef struct {				/*!< GPIO_PIN_INT Structure */
+	__IO uint32_t  ISEL;		/*!< Pin Interrupt Mode register */
+	__IO uint32_t  IENR;		/*!< Pin Interrupt Enable (Rising) register */
+	__O  uint32_t  SIENR;		/*!< Set Pin Interrupt Enable (Rising) register */
+	__O  uint32_t  CIENR;		/*!< Clear Pin Interrupt Enable (Rising) register */
+	__IO uint32_t  IENF;		/*!< Pin Interrupt Enable Falling Edge / Active Level register */
+	__O  uint32_t  SIENF;		/*!< Set Pin Interrupt Enable Falling Edge / Active Level register */
+	__O  uint32_t  CIENF;		/*!< Clear Pin Interrupt Enable Falling Edge / Active Level address */
+	__IO uint32_t  RISE;		/*!< Pin Interrupt Rising Edge register */
+	__IO uint32_t  FALL;		/*!< Pin Interrupt Falling Edge register */
+	__IO uint32_t  IST;			/*!< Pin Interrupt Status register */
+} LPC_GPIOINT_Typedef;
+
+// GPIO grouped interrupt register block structure
+typedef struct {					/*!< GPIO_GROUP_INTn Structure */
+	__IO uint32_t  CTRL;			/*!< GPIO grouped interrupt control register */
+	__I  uint32_t  RESERVED0[7];
+	__IO uint32_t  PORT_POL[8];		/*!< GPIO grouped interrupt port polarity register */
+	__IO uint32_t  PORT_ENA[8];		/*!< GPIO grouped interrupt port m enable register */
+} LPC_GPIOGROUPINT_Typedef;
+
 #else // MCU_IS_LPC1315
 
 typedef struct
@@ -652,9 +674,12 @@ typedef struct
 /* AHB peripherals                                                            */	
 #define LPC_GPIO_BASE         (LPC_AHB_BASE  + 0x00000)
 #define LPC_GPIO0_BASE        (LPC_AHB_BASE  + 0x00000)
-#define LPC_GPIO1_BASE        (LPC_AHB_BASE  + 0x10000)
-#define LPC_GPIO2_BASE        (LPC_AHB_BASE  + 0x20000)
-#define LPC_GPIO3_BASE        (LPC_AHB_BASE  + 0x30000)
+
+#ifndef MCU_IS_LPC1315
+#       define LPC_GPIO1_BASE        (LPC_AHB_BASE  + 0x10000)
+#       define LPC_GPIO2_BASE        (LPC_AHB_BASE  + 0x20000)
+#       define LPC_GPIO3_BASE        (LPC_AHB_BASE  + 0x30000)
+#endif
 
 /******************************************************************************/
 /*                         Peripheral declaration                             */
@@ -677,9 +702,17 @@ typedef struct
 #define LPC_USB               ((LPC_USB_TypeDef    *) LPC_USB_BASE   )
 
 #ifdef MCU_IS_LPC1315
+#       define LPC_GPIO_PIN_INT_BASE     0x4004C000
+#       define LPC_GPIO_GROUP_INT0_BASE  0x4005C000
+#       define LPC_GPIO_GROUP_INT1_BASE  0x40060000
+
 #       define LPC_GPIO       ((LPC_GPIO_TypeDef    *) LPC_GPIO0_BASE )
 #       define LPC_GPIO0        LPC_GPIO
 #       define LPC_GPIO1        LPC_GPIO
+
+#       define LPC_GPIO_PIN_INT          ((LPC_GPIOINT_Typedef       *) LPC_GPIO_PIN_INT_BASE)
+#       define LPC_GPIO_GROUP_INT0       ((LPC_GPIOGROUPINT_Typedef     *) LPC_GPIO_GROUP_INT0_BASE)
+#       define LPC_GPIO_GROUP_INT1       ((LPC_GPIOGROUPINT_Typedef     *) LPC_GPIO_GROUP_INT1_BASE)
 #else
 #       define LPC_GPIO0             ((LPC_GPIO_TypeDef   *) LPC_GPIO0_BASE )
 #       define LPC_GPIO1             ((LPC_GPIO_TypeDef   *) LPC_GPIO1_BASE )
