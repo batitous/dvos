@@ -35,7 +35,7 @@
 #       define GPIOSET         SETBIT(gpio->SET[portNumber],thepin);
 #       define GPIOCLR         SETBIT(gpio->CLR[portNumber],thepin);
 
-static UInt32 getGpioPortNumber(GPIO_PIN pin)
+UInt32 getGpioPortNumber(GPIO_PIN pin)
 {
     if( (pin & 0xFFFF0000) == GPIO_PORT1)
     {
@@ -96,6 +96,15 @@ LPC_GPIO_TypeDef * getGpioPort(GPIO_PIN pin)
 }
 
 //----------------------------- public functions
+
+void initGpio(void)
+{
+#ifdef MCU_IS_LPC13XX
+    SETBIT(LPC_SYSCON->SYSAHBCLKCTRL,6);
+    SETBIT(LPC_SYSCON->SYSAHBCLKCTRL,19);
+#endif
+}
+
 
 void setGpioDirection(GPIO_PIN pin, GPIO_DIR dir)
 {

@@ -33,7 +33,7 @@ ifeq ($(gpio-irq),yes)
         C_HW+= gpio-irq-lpc13xx.c gpio-lpc13xx.c
     endif
     ifeq ($(mcu),lpc1315)
-        C_HW+= gpio-irq-lpc13xx.c
+        C_HW+= gpio-irq-lpc1347.c
     endif
 endif
 

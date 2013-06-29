@@ -62,7 +62,11 @@ typedef enum _GPIO_DIR_
     GPIO_OUT = 1         /**< Digital pin is an Output */
 } GPIO_DIR ;
 
-    
+
+/** @brief Initialize the GPIO MCU hardware and GPIO IRQ
+ */
+extern void initGpio(void);
+
 /** @brief Set GPIO direction
  * 
  * @param pin   GPIO to set

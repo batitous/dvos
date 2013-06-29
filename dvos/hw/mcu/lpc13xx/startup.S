@@ -117,16 +117,16 @@ __cs3_interrupt_vector_cortex_m:
     .endif
 
     .if McuLpc1315 == 1
-    .long RESERVED_IRQn_Handler                        /*!< GPIO Interrupt 0 Interrupt                       */
-    .long RESERVED_IRQn_Handler                        /*!< GPIO Interrupt 1 Interrupt                       */
-    .long RESERVED_IRQn_Handler                        /*!< GPIO Interrupt 2 Interrupt                       */
-    .long RESERVED_IRQn_Handler                        /*!< GPIO Interrupt 3 Interrupt                       */
-    .long RESERVED_IRQn_Handler                        /*!< GPIO Interrupt 4 Interrupt                       */
-    .long RESERVED_IRQn_Handler                        /*!< GPIO Interrupt 5 Interrupt                       */
-    .long RESERVED_IRQn_Handler                        /*!< GPIO Interrupt 6 Interrupt                       */
-    .long RESERVED_IRQn_Handler                        /*!< GPIO Interrupt 7 Interrupt                       */
-    .long RESERVED_IRQn_Handler                        /*!< GPIO Group 0 Interrupt                           */
-    .long RESERVED_IRQn_Handler                        /*!< GPIO Group 1 Interrupt                           */
+    .long PIN_INT0_IRQHandler                          /*!< GPIO Interrupt 0 Interrupt                       */
+    .long PIN_INT1_IRQHandler                          /*!< GPIO Interrupt 1 Interrupt                       */
+    .long PIN_INT2_IRQHandler                          /*!< GPIO Interrupt 2 Interrupt                       */
+    .long PIN_INT3_IRQHandler                          /*!< GPIO Interrupt 3 Interrupt                       */
+    .long PIN_INT4_IRQHandler                          /*!< GPIO Interrupt 4 Interrupt                       */
+    .long PIN_INT5_IRQHandler                          /*!< GPIO Interrupt 5 Interrupt                       */
+    .long PIN_INT6_IRQHandler                          /*!< GPIO Interrupt 6 Interrupt                       */
+    .long PIN_INT7_IRQHandler                          /*!< GPIO Interrupt 7 Interrupt                       */
+    .long GINT0_IRQHandler                             /*!< GPIO Group 0 Interrupt                           */
+    .long GINT1_IRQHandler                             /*!< GPIO Group 1 Interrupt                           */
     .long RESERVED_IRQn_Handler                        /*!< Reserved Interrupt                               */
     .long RESERVED_IRQn_Handler                        /*!< Reserved Interrupt                               */
     .long RESERVED_IRQn_Handler                        /*!< RIT Interrupt                                    */
@@ -292,45 +292,6 @@ Default_Handler:
     .endm
     
     IRQ WAKEUP_IRQn_Handler                          /*!< All I/O pins can be used as wakeup source.       */
- /*   IRQ WAKEUP1_IRQn_Handler                          /*!< There are 40 pins in total for LPC17xx           
-    IRQ WAKEUP2_IRQn_Handler                  
-    IRQ WAKEUP3_IRQn_Handler                  
-    IRQ WAKEUP4_IRQn_Handler                     
-    IRQ  WAKEUP5_IRQn_Handler                          
-    IRQ  WAKEUP6_IRQn_Handler                          
-    IRQ  WAKEUP7_IRQn_Handler                          
-    IRQ  WAKEUP8_IRQn_Handler                          
-    IRQ  WAKEUP9_IRQn_Handler                          
-    IRQ  WAKEUP10_IRQn_Handler                        
-    IRQ  WAKEUP11_IRQn_Handler                        
-    IRQ  WAKEUP12_IRQn_Handler                        
-    IRQ  WAKEUP13_IRQn_Handler                        
-    IRQ  WAKEUP14_IRQn_Handler                        
-    IRQ  WAKEUP15_IRQn_Handler                        
-    IRQ  WAKEUP16_IRQn_Handler                        
-    IRQ  WAKEUP17_IRQn_Handler                        
-    IRQ  WAKEUP18_IRQn_Handler                        
-    IRQ  WAKEUP19_IRQn_Handler                        
-    IRQ  WAKEUP20_IRQn_Handler                        
-    IRQ  WAKEUP21_IRQn_Handler                        
-    IRQ  WAKEUP22_IRQn_Handler                        
-    IRQ  WAKEUP23_IRQn_Handler                        
-    IRQ  WAKEUP24_IRQn_Handler                        
-    IRQ  WAKEUP25_IRQn_Handler                        
-    IRQ  WAKEUP26_IRQn_Handler                        
-    IRQ  WAKEUP27_IRQn_Handler                        
-    IRQ  WAKEUP28_IRQn_Handler                        
-    IRQ  WAKEUP29_IRQn_Handler                        
-    IRQ  WAKEUP30_IRQn_Handler                        
-    IRQ  WAKEUP31_IRQn_Handler                        
-    IRQ  WAKEUP32_IRQn_Handler                        
-    IRQ  WAKEUP33_IRQn_Handler                        
-    IRQ  WAKEUP34_IRQn_Handler                        
-    IRQ  WAKEUP35_IRQn_Handler                        
-    IRQ  WAKEUP36_IRQn_Handler                        
-    IRQ  WAKEUP37_IRQn_Handler                        
-    IRQ  WAKEUP38_IRQn_Handler                        
-    IRQ  WAKEUP39_IRQn_Handler   */ 
     IRQ  SSP1_IRQn_Handler
     IRQ  I2C_IRQn_Handler                             /*!< I2C Interrupt                                    */
     IRQ  TIMER_16_0_IRQn_Handler                      /*!< 16-bit Timer0 Interrupt                          */
@@ -345,9 +306,24 @@ Default_Handler:
     IRQ  WDT_IRQn_Handler                             /*!< Watchdog timer Interrupt                         */  
     IRQ  BOD_IRQn_Handler                             /*!< Brown Out Detect(BOD) Interrupt                  */
     IRQ  RESERVED_IRQn_Handler                        /*!< Reserved Interrupt                               */
+.if McuLpc1315 == 0
     IRQ  EINT3_IRQn_Handler                           /*!< External Interrupt 3 Interrupt                   */
     IRQ  EINT2_IRQn_Handler                           /*!< External Interrupt 2 Interrupt                   */
     IRQ  EINT1_IRQn_Handler                           /*!< External Interrupt 1 Interrupt                   */
     IRQ  EINT0_IRQn_Handler                           /*!< External Interrupt 0 Interrupt                   */
-  
+.endif
+
+.if McuLpc1315 == 1
+    IRQ PIN_INT0_IRQHandler
+    IRQ PIN_INT1_IRQHandler
+    IRQ PIN_INT2_IRQHandler
+    IRQ PIN_INT3_IRQHandler
+    IRQ PIN_INT4_IRQHandler
+    IRQ PIN_INT5_IRQHandler
+    IRQ PIN_INT6_IRQHandler
+    IRQ PIN_INT7_IRQHandler
+    IRQ GINT0_IRQHandler
+    IRQ GINT1_IRQHandler
+.endif
+
     .end

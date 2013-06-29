@@ -164,6 +164,13 @@ typedef enum IRQn
 #pragma anon_unions
 #endif
 
+typedef struct {
+	__IO uint32_t  STARTAPR;		/*!< Start logic edge control register */
+	__IO uint32_t  STARTER;			/*!< Start logic signal enable register */
+	__IO uint32_t  STARTRSRCLR;		/*!< Start logic reset register */
+	__IO uint32_t  STARTSR;			/*!< Start logic status register */
+} LPC_SYSCTL_STARTST_T;
+
 /*------------- System Control (SYSCON) --------------------------------------*/
 typedef struct {			/*!< SYSCTL Structure */
 	__IO uint32_t  SYSMEMREMAP;		/*!< System Memory remap register */
