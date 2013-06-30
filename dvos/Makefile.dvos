@@ -16,6 +16,7 @@ endif
 
 #==== Use the lpc1315 core ====#
 ifeq ($(mcu),lpc1315)
+    # LPC1315/16/17/45/46/47 MCU
     COMPILER_DEFINES += -DMCU_IS_LPC13XX
     COMPILER_DEFINES += -DMCU_IS_LPC1315
     COMPILER_DEFINES += -DKERNEL_MEMORY=$(kernelmemory)

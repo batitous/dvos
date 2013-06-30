@@ -90,7 +90,7 @@ void initLowLevelCpu(void)
     LPC_SYSCON->MAINCLKSEL    = 3;
     
     // Update main clock selection
-#ifdef MCU_IS_LPC13xx
+#ifdef MCU_IS_LPC1311
     LPC_SYSCON->MAINCLKUEN    = 1;
     LPC_SYSCON->MAINCLKUEN    = 0;
     LPC_SYSCON->MAINCLKUEN    = 1;
