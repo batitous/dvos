@@ -1,5 +1,7 @@
 # default hw source files:
-C_HW=init.c core_cm3.c time.c device.c
+C_HW=init.c core_cm3.c time.c 
+
+# device.c
 
 
 # Source path of HW:

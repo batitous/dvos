@@ -25,8 +25,9 @@ SEARCH_DIR(.)
 
 MEMORY
 {
-  rom (rx)  : ORIGIN = 0x00000000, LENGTH = 32K 
-  ram (rwx) : ORIGIN = 0x10000000, LENGTH =  8K
+  rom (rx)      : ORIGIN = 0x00000000, LENGTH = 32K 
+  ram (rwx)     : ORIGIN = 0x10000000, LENGTH =  8K
+  usbram (rwx)  : ORIGIN = 0x20004000, LENGTH = 0x800   /* 2k  */
 }
 
 /* These force the linker to search for particular symbols from
@@ -173,6 +174,13 @@ SECTIONS
   __cs3_region_zero_size_ram = _end - _edata;
   __cs3_region_size_ram = LENGTH(ram);
   __cs3_region_num = 1;
+
+  .usb_ram (NOLOAD): ALIGN(4)
+  {
+    FILL(0xff)
+    *(USB_RAM)
+    *(.bss*)
+  } > usbram
 
   .stab 0 (NOLOAD) : { *(.stab) }
   .stabstr 0 (NOLOAD) : { *(.stabstr) }
