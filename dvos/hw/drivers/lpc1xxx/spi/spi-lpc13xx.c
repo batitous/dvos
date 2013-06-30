@@ -51,7 +51,7 @@ void initSPI(void)
     CLRBIT(LPC_SSP0->CR0,CPHA);
 
     // clock : PCLK / CPSR = 72MHz / 12MHz
-    LPC_SSP0->CPSR = 6;
+    LPC_SSP0->CPSR = 8;
     
     
     // enable ssp0
