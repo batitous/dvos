@@ -131,6 +131,11 @@ void enableGpioIrq(GPIO_PIN pin, GPIO_EDGE edge)
     UInt32 thepin = pin & 0xFFFF;
     UInt32 portNumber = getGpioPortNumber(pin);
     
+    if (pinIrqFree>=PIN_IRQ_MAX)
+    {
+        return;
+    }
+    
     if (portNumber==1)
     {
         // datasheet dit de mettre +24, mais l'exemple du datasheet ne donne pas ca... wtf ???
@@ -146,6 +151,7 @@ void enableGpioIrq(GPIO_PIN pin, GPIO_EDGE edge)
     
     if (edge==GPIO_BOTH_EDGE)
     {
+        // todo dont work ?
         // test : can't see the falling/rising edge in irq
         SETBIT(LPC_GPIO_PIN_INT->IENR,pinIrqFree);
         SETBIT(LPC_GPIO_PIN_INT->IENF,pinIrqFree);

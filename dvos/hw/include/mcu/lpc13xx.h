@@ -689,7 +689,13 @@ typedef struct
 #define LPC_CT32B0_BASE       (LPC_APB0_BASE + 0x14000)
 #define LPC_CT32B1_BASE       (LPC_APB0_BASE + 0x18000)
 #define LPC_ADC_BASE          (LPC_APB0_BASE + 0x1C000)
-#define LPC_USB_BASE          (LPC_APB0_BASE + 0x80000) // L.O.L LPC1347
+
+#ifdef MCU_IS_LPC1315
+#       define LPC_USB_BASE          (LPC_APB0_BASE + 0x80000)
+#else
+#       define LPC_USB_BASE          (LPC_APB0_BASE + 0x20000)
+#endif
+
 #define LPC_PMU_BASE          (LPC_APB0_BASE + 0x38000)
 // LPC_SSP_BASE original name, LPC_SSP0_BASE new preferred name
 #define LPC_SSP_BASE          (LPC_APB0_BASE + 0x40000)
@@ -702,7 +708,7 @@ typedef struct
 #define LPC_GPIO_BASE         (LPC_AHB_BASE  + 0x00000)
 #define LPC_GPIO0_BASE        (LPC_AHB_BASE  + 0x00000)
 
-#ifndef MCU_IS_LPC1315
+#ifdef MCU_IS_LPC1311
 #       define LPC_GPIO1_BASE        (LPC_AHB_BASE  + 0x10000)
 #       define LPC_GPIO2_BASE        (LPC_AHB_BASE  + 0x20000)
 #       define LPC_GPIO3_BASE        (LPC_AHB_BASE  + 0x30000)
@@ -750,7 +756,7 @@ typedef struct
 
 
 /******************************************************************************/
-/*                         Alias for POB Libs-hardware                        */
+/*                         Alias for Libs-hardware                            */
 /******************************************************************************/
 
 #define UART0_IRQn              UART_IRQn
