@@ -64,7 +64,15 @@ endif
 
 
 ifeq ($(spi),yes)
-    C_HW+= spi.c
+    ifeq ($(mcu),lpc17xx)
+        C_HW+= spi-lpc17xx.c
+    endif
+    ifeq ($(mcu),lpc13xx)
+        C_HW+= spi-lpc13xx.c
+    endif
+    ifeq ($(mcu),lpc1315)
+        C_HW+= spi-lpc13xx.c
+    endif
 endif
 
 ifeq ($(debug),yes)
