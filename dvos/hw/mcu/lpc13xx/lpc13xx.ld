@@ -26,7 +26,7 @@ SEARCH_DIR(.)
 MEMORY
 {
   rom (rx)      : ORIGIN = 0x00000000, LENGTH = 32K 
-  ram (rwx)     : ORIGIN = 0x10000000, LENGTH =  8K
+  ram (rwx)     : ORIGIN = 0x10000000, LENGTH = 10K
   usbram (rwx)  : ORIGIN = 0x20004000, LENGTH = 0x800   /* 2k  */
 }
 
@@ -157,12 +157,7 @@ SECTIONS
     _end = .;
     __end = .;
   } >ram AT>rom
-/* baptiste 08.08.2011 remove heap
-  .heap :
-  {
-    *(.heap)
-  } >ram
-*/
+
   .stack (__cs3_stack - __cs3_stack_size) :
   {
     *(.stack)
@@ -179,7 +174,6 @@ SECTIONS
   {
     FILL(0xff)
     *(USB_RAM)
-    *(.bss*)
   } > usbram
 
   .stab 0 (NOLOAD) : { *(.stab) }
