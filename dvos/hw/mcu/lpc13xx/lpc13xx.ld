@@ -172,7 +172,6 @@ SECTIONS
 
   .usb_ram (NOLOAD): ALIGN(4)
   {
-    FILL(0xff)
     *(USB_RAM)
   } > usbram
 
