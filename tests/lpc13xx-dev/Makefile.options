@@ -9,13 +9,12 @@ COMPILER_DEFINES = -DUSB_DEVICE_ROM_DRIVER
 
 # project source files:
 C_PROJECT=usermain.c
-# UsbRom.c
 
 # include repertory : -I<repertory path>
 INC_PROJECT=
 
 # path to project source code
-C_PATH_PROJECT=./source ./usb ./usb/Lib
+C_PATH_PROJECT=./source
 
 
 #### select device you want to use ####
