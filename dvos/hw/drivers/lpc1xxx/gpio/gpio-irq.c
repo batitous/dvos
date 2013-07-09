@@ -42,7 +42,7 @@ UInt32 getIRQNumber(UInt32 reg)
 void enableEventOnGpio(GPIO_PIN pin, GPIO_EDGE edge, KEventCallback callback)
 {
     // encode the event id with pin, edge and event mask
-    if( registerEvent( KEVENT_GPIO_MASK | pin /*| edge*/, callback) == False )
+    if( registerEvent( KEVENT_GPIO_MASK | pin /*| edge*/, callback, 0) == False )
     {
         return;
     }

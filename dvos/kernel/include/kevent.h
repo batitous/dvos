@@ -39,6 +39,7 @@ typedef struct _k_event_register_
     KLink *             next;   /**< next event registered */
     UInt32              id;     /**< id of event */
     KEventCallback      callback; /**< user callback code */
+    UInt32              data;   /**< specific data for user callback */
     //todo add auto register or remove when first event ?
 } KEventRegister;
 
@@ -57,9 +58,10 @@ extern void initEventManager(void);
 /** @brief Register a event
  * @param id
  * @param user
+ * @param userData
  * @return True if success
  */
-extern Bool registerEvent(UInt32 id, KEventCallback user);
+extern Bool registerEvent(UInt32 id, KEventCallback user, UInt32 userData);
 
 /** @brief Post an event
  * 

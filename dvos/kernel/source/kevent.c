@@ -91,6 +91,10 @@ void kEventThreadManager(void)
                 {
                     if(manager->callback!=0)
                     {
+                        if (e->message==0)
+                        {
+                            e->message = manager->data;
+                        }
                         manager->callback(e);
                     }
                 }
@@ -142,7 +146,7 @@ void initEventManager(void)
        
 }
 
-Bool registerEvent(UInt32 id, KEventCallback user)
+Bool registerEvent(UInt32 id, KEventCallback user, UInt32 userData)
 {
     KEventRegister * manager;
     
@@ -166,6 +170,7 @@ Bool registerEvent(UInt32 id, KEventCallback user)
     
     manager->id = id;
     manager->callback = user;
+    manager->data = userData;
  
     insertSNodeToStart(&kEventRegisters,(KLink *)manager);
 

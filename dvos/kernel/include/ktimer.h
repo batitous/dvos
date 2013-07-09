@@ -63,6 +63,6 @@ extern void wait100Us(UInt32 delay);
 extern void setDelayOfAlarm(KAlarm * alarm, UInt32 delay);
 
 //WARNING Alarm is not started !
-extern KAlarm * enableEventOnAlarm(UInt32 delay, KEventCallback callback);
+extern KAlarm * enableEventOnAlarm(UInt32 delay, KEventCallback callback, UInt32 dataForCallback);
 
 #endif

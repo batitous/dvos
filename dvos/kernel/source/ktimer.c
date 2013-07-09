@@ -161,14 +161,14 @@ void waitAlarm(KAlarm * alarm)
 
 static UInt16 kEventLastAlarmId = 1;
 
-KAlarm * enableEventOnAlarm(UInt32 delay, KEventCallback callback)
+KAlarm * enableEventOnAlarm(UInt32 delay, KEventCallback callback, UInt32 dataForCallback)
 {
     KAlarm * alarm = newAlarm(delay);
     
     alarm->id = kEventLastAlarmId;
     kEventLastAlarmId++;
         
-    registerEvent( KEVENT_ALARM_MASK | alarm->id , callback);
+    registerEvent( KEVENT_ALARM_MASK | alarm->id , callback, dataForCallback);
     
     return alarm;
 }
