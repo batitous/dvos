@@ -6,10 +6,18 @@ A tiny operating system for the NXP Cortex M3 micro-controller.
 The kernel has been tested on this micro-controller :
 - LPC1311
 - LPC1315
-- LPC1766
+- LPC1347
+- LPC1769
+
 
 How to use
 ----------
+
+The Dvos is a Makefile project, you can use it directly from the command line :
+- make clean
+- make build
+
+Open the file "Makefile.options" in the test project to customize your firmware.
 
 Install NetBeans :
 - Install NetBeans 7.0.1 mini (C/C++ version)
