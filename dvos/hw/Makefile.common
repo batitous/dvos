@@ -45,6 +45,9 @@ ifeq ($(analog),yes)
     ifeq ($(mcu),lpc13xx)
         C_HW+= analog-lpc13xx.c
     endif
+    ifeq ($(mcu),lpc1315)
+        C_HW+= analog-lpc13xx.c
+    endif
 endif
 
 ifeq ($(timer),yes)

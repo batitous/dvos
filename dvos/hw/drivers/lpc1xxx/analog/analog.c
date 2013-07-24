@@ -22,10 +22,16 @@
 //----------------------------- private functions
 
 
-#ifdef MCU_IS_LPC13XX
+#ifdef MCU_IS_LPC1311
 #       define ANA_CR           LPC_ADC->CR
 #       define ANA_RESULT       LPC_ADC->GDR
 #       define GET_RESULT(reg)  (reg>>6) & 0x03FF
+#endif
+
+#ifdef MCU_IS_LPC1315
+#       define ANA_CR           LPC_ADC->CR
+#       define ANA_RESULT       LPC_ADC->GDR
+#       define GET_RESULT(reg)  (reg>>4) & 0x0FFF
 #endif
 
 #ifdef MCU_IS_LPC17XX
