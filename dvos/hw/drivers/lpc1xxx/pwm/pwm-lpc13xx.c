@@ -115,7 +115,7 @@ void setPwmPin(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected)
             if( (pwmSelected&PWM0)==PWM0)
             {
                 // IOCON PIO0_21 CT16B1_MAT0
-                SETBIT(LPC_IOCON->PIO0_21,1);
+                SETBIT(LPC_IOCON->PIO0_21,0);
             }
 
             if( (pwmSelected&PWM1)==PWM1)
