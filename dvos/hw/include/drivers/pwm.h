@@ -23,6 +23,11 @@
 extern "C" {
 #endif
 
+/** Check the code and datasheet to know the i/o pins of pwm output
+ * 
+ * Warning, if you use the same timer for multiple pwm output, your pwm output share the same frequency output !
+ * 
+ */
 
 typedef enum _pwm_
 {
@@ -48,17 +53,6 @@ typedef enum _timertype_
     TIMER32 = 0,
     TIMER16 = 1
 } PWMTIMER;
-
-/** Warning on lpc13xx only !
- * 
- * TIMER0 PWM0 is on uart0
- * TIMER0 PWM1 is on uart0
- *   
- * TIMER1 PWM0 is on analog2
- * TIMER1 PWM1 is on analog3
- * TIMER1 PWM2 is on analog4
- * 
- */
 
 
 #ifdef MCU_IS_LPC13XX
