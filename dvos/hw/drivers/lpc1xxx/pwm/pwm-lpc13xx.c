@@ -266,7 +266,7 @@ void initPwm(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected, UInt32 wi
     timer->MR3 = widthPwm;
 
     // MRx store the pwm duty cycle: time the MATx pin is high
-    cycle = (widthPwm * (100 - percentage)) / 100;
+    cycle = (widthPwm * (1000 - percentage)) / 1000;
     
        
     // reset when MR3 match the timer counter
@@ -356,7 +356,7 @@ void setPwmDutyCycle(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected, U
     widthPwm = timer->MR3;
 
     // MRx store the pwm duty cycle: time the MATx pin is high
-    cycle = (widthPwm * (100 - percentage)) / 100;
+    cycle = (widthPwm * (1000 - percentage)) / 1000;
     
     setPwmCycle(timer, pwmSelected,cycle);
 }

@@ -173,7 +173,7 @@ void initPwm(PWM pwmSelected, UInt32 widthInUs, UInt32 percentage)
 
     // MRx store the pwm duty cycle: time the MATx pin is high
     percentage = 100 - percentage;
-    cycle = (widthPwm * (100 - percentage)) / 100;
+    cycle = (widthPwm * (1000 - percentage)) / 1000;
     
     setPwmCycleAndEnableOutput(pwmSelected,cycle);
     
@@ -204,7 +204,7 @@ void setPwmDutyCycle(PWM pwmSelected, UInt32 percentage)
     UInt32 widthPwm = LPC_PWM1->MR0;
     
     percentage = 100 - percentage;
-    cycle = (widthPwm * (100 - percentage)) / 100;
+    cycle = (widthPwm * (1000 - percentage)) / 1000;
     
     setPwmCycleAndEnableOutput(pwmSelected,cycle);
     
@@ -248,8 +248,8 @@ void initPwmForSound(UInt32 widthInUs, UInt32 percentage)
     SETBIT(LPC_PWM1->LER,5);
 
     // MRx store the pwm duty cycle: time the MATx pin is high
-    percentage = 100 - percentage;
-    cycle = (widthPwm * (100 - percentage)) / 100;
+    percentage = 1000 - percentage;
+    cycle = (widthPwm * (1000 - percentage)) / 1000;
     
     LPC_PWM1->MR6 = cycle;
     
