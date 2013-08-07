@@ -91,44 +91,58 @@ void setPwmPin(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected)
         {
             if( (pwmSelected&PWM0)==PWM0)
             {
-                // not activated!
-
-                // IOCON_PIO1_6 CT32B0_MAT0 warning: RXD FUNC=0x2
-                //SETBIT(LPC_IOCON->PIO1_6,1);
+                // PIO0_8/MISO0/CT16B0_MAT0/ARM_TRACE_CLK
+                SETBIT(LPC_IOCON->PIO0_8,1);
+                
+                // ONLY LPC1315 : PIO1_13/DTR/ CT16B0_MAT0/TXD warning, doesn't exist on HVQFN33
+                
             }
 
             if( (pwmSelected&PWM1)==PWM1)
             {
-                // IOCON_PIO0_9 CT16B0_MAT1
+                // PIO0_9/MOSI0/CT16B0_MAT1/ARM_TRACE_SWV
                 SETBIT(LPC_IOCON->PIO0_9,1);
+                
+                // ONLY LPC1315 : PIO1_14/DSR/CT16B0_MAT1/RXD
             }
 
             if( (pwmSelected&PWM2)==PWM2)
             {
-                // IOCON_PIO0_10 CT16B0_MAT2
+                // SWCLK/PIO0_10/ SCK0/CT16B0_MAT2                
                 SETBIT(LPC_IOCON->SWCLK_PIO0_10,0);
                 SETBIT(LPC_IOCON->SWCLK_PIO0_10,1);
+                
             }
         }
         else
         {
             if( (pwmSelected&PWM0)==PWM0)
             {
-                // IOCON PIO0_21 CT16B1_MAT0
+#ifdef MCU_IS_LPC1311
+                // PIO1_9/CT16B1_MAT0
+                SETBIT(LPC_IOCON->PIO1_9,0);
+#endif
+                
+#ifdef MCU_IS_LPC1315
+                // PIO0_21/CT16B1_MAT0/MOSI1
                 SETBIT(LPC_IOCON->PIO0_21,0);
+#endif
+                
             }
 
             if( (pwmSelected&PWM1)==PWM1)
             {
-                // IOCON_PIO0_9 CT16B0_MAT1
-                //SETBIT(LPC_IOCON->PIO0_9,1);
-            }
-
-            if( (pwmSelected&PWM2)==PWM2)
-            {
-                // IOCON_SWDIO_PIO1_3 CT32B1_MAT2 warning : AD4 FUNC=0x3
-                //SETBIT(LPC_IOCON->SWDIO_PIO1_3,0);
-                //SETBIT(LPC_IOCON->SWDIO_PIO1_3,1);
+#ifdef MCU_IS_LPC1311
+                // PIO1_10/AD6/ CT16B1_MAT1
+                SETBIT(LPC_IOCON->PIO1_10,1);
+#endif
+                
+#ifdef MCU_IS_LPC1315
+                // PIO0_22/AD6/CT16B1_MAT1/MISO1
+                SETBIT(LPC_IOCON->PIO0_22,1);
+                
+                // PIO1_23/CT16B1_MAT1/SSEL1
+#endif
             }
         }
 
