@@ -176,7 +176,7 @@ Bool private_e2p_erase( UInt32 addr, UInt32 totalSize)
 	return True;
 }
 
-Bool EraseEeprom()
+Bool eraseEeprom()
 {
     return private_e2p_erase(0,(EEPROM_SIZE/PAGE_SIZE));
 }

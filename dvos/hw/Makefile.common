@@ -65,6 +65,15 @@ endif
 
 ifeq ($(i2cmaster),yes)
     C_HW+= i2c0-master.c
+    ifeq ($(mcu),lpc17xx)
+        C_HW+= i2c-master-lpc17xx.c
+    endif
+    ifeq ($(mcu),lpc13xx)
+        C_HW+= i2c-master-lpc13xx.c
+    endif
+    ifeq ($(mcu),lpc1315)
+        C_HW+= i2c-master-lpc13xx.c
+    endif
 endif
 
 

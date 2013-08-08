@@ -9,7 +9,7 @@ ifeq ($(kevent),yes)
     COMPILER_DEFINES+= -DKERNEL_USE_KEVENT
 endif
 
-# If we want debug on kernel, then add fautldump
+# If we want debug on kernel, then add faultdump
 ifeq ($(debug),yes)
     C_KERNEL+= faultdump.c
 endif
