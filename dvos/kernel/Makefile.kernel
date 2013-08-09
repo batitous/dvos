@@ -1,7 +1,13 @@
 # kernel source files:
 
 # Default kernel source :
-C_KERNEL=klist.c kmemory.c kernel.c fault.c klock.c ktimer.c kiostream.c main.c
+C_KERNEL=klist.c kmemory.c kernel.c fault.c klock.c ktimer.c kiostream.c
+
+ifeq ($(dvoslib),yes)
+    
+else
+    C_KERNEL+= main.c
+endif
 
 # If event set to yes, then include the event manager :
 ifeq ($(kevent),yes)

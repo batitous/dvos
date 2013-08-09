@@ -17,6 +17,7 @@ INC_PROJECT=
 # path to project source code
 C_PATH_PROJECT=
 
+dvoslib = yes
 
 #### select device you want to use ####
 mcu = lpc1315

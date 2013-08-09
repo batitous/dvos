@@ -17,7 +17,7 @@ BUILD_PATH=./build
 SOURCE_FILES= $(DVOS_FILES) $(C_PROJECT)
 SRC_PATH=$(SRC_KERN) $(SRC_HW) $(C_PATH_PROJECT)
 
-EXE=./$(NAME)-$(mcu).lib
+EXE=./$(NAME)-$(mcu).a
 
 
 ## Macro to compile:
@@ -33,9 +33,11 @@ OBJ_FILES =$(patsubst %.c,$(BUILD_PATH)/%.o,$(SOURCE_FILES))
 ## compiler & linker & library macro :
 
 build: $(OBJ_FILES)
-	@$(ASM_GCC) $(ASM_HW) -o $(BUILD_PATH)/startup.o
-	$(AR_CMD) $(OBJ_FILES) $(BUILD_PATH)/startup.o
+#	@$(ASM_GCC) $(ASM_HW) -o $(BUILD_PATH)/startup.o
+	@$(AR_CMD) $(OBJ_FILES)
 	
+# $(BUILD_PATH)/startup.o
+
 vpath %.c $(SRC_PATH)
 
 $(BUILD_PATH)/%.o : %.c
