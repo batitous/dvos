@@ -52,6 +52,12 @@ typedef enum _iapCommandCode_
 extern void iapExecute(UInt32 *param_tab,UInt32 *result_tab);
 
 
+// low level flash functions for baptiste
+extern Bool iapPrepareSector(UInt32 start_sector,UInt32 end_sector);
+extern Bool iapWriteBuffer(UInt32 flash_address, UInt32 * buffer, UInt32 count);
+extern Bool iapEraseSector(UInt32 start_sector,UInt32 end_sector);
+extern void iapReinvokeBootloader(void);
+
 
 #ifdef __cplusplus
  }

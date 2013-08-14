@@ -94,8 +94,12 @@ ifeq ($(debug),yes)
   C_HW+= debugprintf.c
 endif
 
+ifeq ($(iap),yes)
+    C_HW+= iap.c rom-iap.c
+endif
+
 ifeq ($(flash),yes)
-    C_HW+= iap.c flash.c rom-iap.c
+    C_HW+= flash.c
 endif
 
 ifeq ($(flash-sst25),yes)

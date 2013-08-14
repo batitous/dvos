@@ -84,4 +84,11 @@ Bool iapPrepareSector(UInt32 start_sector,UInt32 end_sector)
     return True;
 }
 
-
+void iapReinvokeBootloader(void)
+{
+    UInt32 iapParameter[5];
+    UInt32 iapResult[5];
+    
+    iapParameter[0] = IAP_REINVOKE_ISP;
+    iapExecute(iapParameter,iapResult);
+}

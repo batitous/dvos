@@ -23,13 +23,7 @@
 extern "C" {
 #endif
 
-    
-    
-    
-// low level flash functions for baptiste
-extern Bool iapPrepareSector(UInt32 start_sector,UInt32 end_sector);
-extern Bool iapWriteBuffer(UInt32 flash_address, UInt32 * buffer, UInt32 count);
-extern Bool iapEraseSector(UInt32 start_sector,UInt32 end_sector);
+
 
 
 /** @brief Define the flash available for user for read/write.
