@@ -1144,14 +1144,15 @@ is less than or equal to the current debug level it will be printed.
 void DebugPrintf(int level, const char *fmt, ...)
 {
     va_list ap;
-
+    
     if (level <= debug_level)
     {
         char pTemp[2000];
         va_start(ap, fmt);
         //vprintf(fmt, ap);
         vsprintf(pTemp, fmt, ap);
-        TRACE(pTemp);
+        printf("%s", pTemp);
+//        TRACE(pTemp);
         va_end(ap);
         fflush(stdout);
     }
