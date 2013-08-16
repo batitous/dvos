@@ -1,7 +1,7 @@
 all:      lpc21isp
 
 GLOBAL_DEP  = adprog.h lpc21isp.h lpcprog.h lpcterm.h
-CC = gcc
+CC = llvm-gcc
 
 ifneq ($(findstring(freebsd, $(OSTYPE))),)
 CFLAGS+=-D__FREEBSD__
