@@ -26,10 +26,10 @@ extern "C" {
 
 
 
-/** @brief Define the flash available for user for read/write.
+/** @brief Define the flash memory available for read/write operation.
  *
- * @param sectorStart   Start number
- * @param sectorEnd     End number
+ * @param sectorStart   Sector start number
+ * @param sectorEnd     Sector end number
  */
 extern void initUserFlash(UInt32 sectorStart, UInt32 sectorEnd);
 

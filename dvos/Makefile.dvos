@@ -70,7 +70,11 @@ endif
 
 
 # Add kernel makefile
-include $(DVOS_PATH)kernel/Makefile.kernel
+ifeq ($(kernel),no)
+
+else
+    include $(DVOS_PATH)kernel/Makefile.kernel
+endif
 
 DVOS_FILES= $(C_KERNEL) $(C_HW)
 

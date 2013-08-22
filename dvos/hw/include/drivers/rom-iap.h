@@ -48,14 +48,42 @@ typedef enum _iapCommandCode_
 #define IAP_SUCCESS 0
 #define IAP_ADDRESS 0x1FFF1FF1
 
-
+/** Execute a low level ROM IAP command
+ * 
+ * @param param_tab
+ * @param result_tab
+ */
 extern void iapExecute(UInt32 *param_tab,UInt32 *result_tab);
 
 
-// low level flash functions for baptiste
+/** Prepare a sector to be writable or erasable 
+ * 
+ * @param start_sector          Sector start number
+ * @param end_sector            Sector end number
+ * @return  False if error
+ */
 extern Bool iapPrepareSector(UInt32 start_sector,UInt32 end_sector);
+
+/** Write data to the specified address in flash memory.
+ * 
+ * @param flash_address         Memory's address where write the buffer
+ * @param buffer                Data's
+ * @param count                 Number of bytes to be written
+ * @return False if error
+ */
 extern Bool iapWriteBuffer(UInt32 flash_address, UInt32 * buffer, UInt32 count);
+
+/** Erase a (or multiple) sector of flash memory
+ * 
+ * @param start_sector          Sector start number 
+ * @param end_sector            Sector end number
+ * @return False if error
+ */
 extern Bool iapEraseSector(UInt32 start_sector,UInt32 end_sector);
+
+/** Relaunch the NXP ROM Bootloader
+ * 
+ */
 extern void iapReinvokeBootloader(void);
 
 

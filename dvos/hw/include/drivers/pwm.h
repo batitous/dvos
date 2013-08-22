@@ -62,7 +62,7 @@ typedef enum _timertype_
  * @param pwmSelected           Select an PWM output (or multiple PWM output).
  * @param widthInUs             PWM period in us.
  * @param widthDivider          Constant to divide your period (to lower PWM frequency)
- * @param percentage            Duty cycle.
+ * @param percentage            Duty cycle (between 0% and 1000%).
  */
 extern void initPwm(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected, UInt32 widthInUs, UInt32 widthDivider, UInt32 percentage);
         
@@ -70,7 +70,7 @@ extern void initPwm(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected, UI
  * 
  * @param timerSelected         Select the timer to be used for the PWM.
  * @param pwmSelected           Select the PWM you want set the duty cycle.
- * @param percentage            Set duty cycle.
+ * @param percentage            Set duty cycle (between 0% and 1000%).
  */
 extern void setPwmDutyCycle(PWMTIMER timerType, TIMER timerSelected, PWM pwmSelected, UInt32 percentage);
 
