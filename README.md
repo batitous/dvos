@@ -1,4 +1,3 @@
-
 Dvos
 ====
 
@@ -23,7 +22,7 @@ Open the file "Makefile.options" in the test project to customize your firmware.
 NetBeans
 --------
 
-The project file of the dvos are created with NetBeans. If you want use NetBeans, follow the next step:
+The project file of the dvos are created with NetBeans. If you want to use NetBeans IDE, follow the next step:
 
 Install NetBeans :
 - Install NetBeans 7.0.1 mini (C/C++ version)
