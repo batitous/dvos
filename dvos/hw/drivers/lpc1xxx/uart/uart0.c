@@ -53,19 +53,12 @@ void setUartIoCon(void)
 
 #ifdef MCU_IS_LPC13XX
 
-#       ifdef HARDWARE_IS_LPC13XX_EMOX_IO
 //115200
 #               define setBaudrate()    LPC_UART0->DLL = 39; LPC_UART0->DLM = 0;
 //57600
 //#               define setBaudrate()    LPC_UART0->DLL = 78; LPC_UART0->DLM = 0;
-#       else
-//115200
-#               define setBaudrate()    LPC_UART0->DLL = 39; LPC_UART0->DLM = 0;
-#endif
-
 //38400
 //#       define setBaudrate()    LPC_UART0->DLL = 117; LPC_UART0->DLM = 0;
-#endif  
 
 #ifdef MCU_IS_LPC17XX
 
