@@ -25,7 +25,7 @@ SEARCH_DIR(.)
 
 MEMORY
 {
-  rom (rx)      : ORIGIN = 0x00000000, LENGTH = 32K 
+  rom (rx)      : ORIGIN = /*0x00001000*/0x00000000, LENGTH = 32K 
   ram (rwx)     : ORIGIN = 0x10000000, LENGTH = 8K
   usbram (rwx)  : ORIGIN = 0x20004000, LENGTH = 0x800   /* 2k  */
 }
