@@ -63,6 +63,10 @@ ifeq ($(timer),yes)
     endif
 endif
 
+ifeq ($(clock),yes)
+    C_HW+= clock-lpc13xx.c
+endif
+
 ifeq ($(i2cmaster),yes)
     C_HW+= i2c0-master.c
     ifeq ($(mcu),lpc17xx)

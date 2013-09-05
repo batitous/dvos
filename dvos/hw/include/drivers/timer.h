@@ -71,10 +71,10 @@ extern void waitTimer32(TIMER timerSelected);
  */
 extern void waitUsPrecise(UInt32 waitInUs);
 
-// on lpc17xx, McuClock uses the RIT
-// on lpc13xx : McuClock uses the 32 bits TIMER1 !
-extern void initMcuClock(void);
-extern UInt32 getMcuClock(void);
+// on lpc17xx, clock uses the RIT
+// on lpc13xx : clock uses the 32 bits TIMER1 !
+extern void initTimerClock(void);
+extern UInt32 getTimerClock(void);
 
 
 #ifdef __cplusplus
